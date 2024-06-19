@@ -22,8 +22,7 @@ public class MerchantCardApi {
 
 
     // test env gateway
-//    private static final String GATEWAY =  "https://test.moonbank.me/api-web";
-    private static final String GATEWAY =  "http://127.0.0.1:8848/api-web";
+    private static final String GATEWAY =  "https://test.moonbank.me/api-web";
 
     // APPID
     private static final String APP_ID = "app_447770";
@@ -515,10 +514,38 @@ public class MerchantCardApi {
             System.out.println("reject3dsAuth encode result===>" + descStr);
         }
     }
+    public static void  getPin(Integer userBankcardId,String uId) {
+        GetPinRequest request = new GetPinRequest();
+        request.setUserBankcardId(userBankcardId);
+        String result = postData(uId, MerchantCardMethods.GET_PIN, request,null);
+        System.out.println("getPin response String:  " + result);
+        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
+        });
+        System.out.println("getPin response Object:  " + apiResponse);
+        if (apiResponse.isSuccess()) {
+            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
+            System.out.println("getPin encode result===>" + descStr);
+        }
+    }
+    public static void  usdToEur(BigDecimal amount,String uId) {
+        GetERURequest request = new GetERURequest();
+        request.setAmount(amount);
+        String result = postData(uId, MerchantCardMethods.USD_TO_EUR, request,null);
+        System.out.println("usdToEur response String:  " + result);
+        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
+        });
+        System.out.println("usdToEur response Object:  " + apiResponse);
+        if (apiResponse.isSuccess()) {
+            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
+            System.out.println("usdToEur encode result===>" + descStr);
+        }
+    }
     public static void main(String[] args) {
 //        query3dsAuth("CTX3DS1617206022504481","35920");
 //        approve3dsAuth("CTX3DS1617206022504481","35920");
-        reject3dsAuth("CTX3DS1617206022504481","35920");
+//        reject3dsAuth("CTX3DS1617206022504481","35920");
+//        getPin(19290,"35968");
+//        usdToEur(BigDecimal.TEN,"35920");
 
 //        getSystemClock();
 
