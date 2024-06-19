@@ -18,12 +18,8 @@ import java.nio.charset.StandardCharsets;
 
 public class MerchantCardApi {
 
-
-
-
     // test env gateway
     private static final String GATEWAY =  "https://test.moonbank.me/api-web";
-
     // APPID
     private static final String APP_ID = "app_447770";
     // SECRET
@@ -101,21 +97,21 @@ public class MerchantCardApi {
 
     public static void setUserInfo(String uId) {
         SetUserInfoRequest request = new SetUserInfoRequest();
-        request.setFirstName("东营");
-        request.setLastName("邵");
-        request.setFirstNameEnglish("Dongying");
-        request.setLastNameEnglish("Shao");
+        request.setFirstName("三");
+        request.setLastName("张");
+        request.setFirstNameEnglish("San");
+        request.setLastNameEnglish("Zhang");
         request.setNationality("CN");
-        request.setDateOfBirth("1987-04-04");
+        request.setDateOfBirth("1999-01-01");
         UserInfoAddressVo addressVo = new UserInfoAddressVo();
         addressVo.setAddressLine1("Chaoyang ,baiziwan");
         addressVo.setCity("Beijing");
         addressVo.setCountryCode("CN");
         request.setAddress(addressVo);
         IdentificationVo identificationVo = new IdentificationVo();
-        identificationVo.setIdentificationNumber("E67669656");
+        identificationVo.setIdentificationNumber("Abc123");
         identificationVo.setIdentificationType("PASSPORT");
-        identificationVo.setIdentificationExpiryDate("2026-02-14");
+        identificationVo.setIdentificationExpiryDate("2029-02-14");
         request.setIdentification(identificationVo);
         String result = postData(uId, MerchantCardMethods.SET_USER_INFO, request,null);
         System.out.println("setUserInfo response String:  " + result);
@@ -554,15 +550,15 @@ public class MerchantCardApi {
 //        setHolderInfo("35920");
 //        kycGateway();
 
-//        userRegister("86","110120","api_demo_test@asinx.io");
+//        userRegister("86","11032120","_test@asinx.io");
 //        setUserProfession("35920");
 //        applyBankcard("36061",24,null,"KR");
 //        rechargeBankcard("36061",19306,new BigDecimal(8),new BigDecimal(50));
 //        closeBankcard("36061",19306);
 //        queryBankcardOrder("36046",19280,"CLOSE2406031639263553919");
 //        updateBankcardStatus("36059",19300,true);
-//        setUserInfo("26343");
-//        kycCheck("26343");
+        setUserInfo("36064");
+//        kycCheck("36064");
 
 
 //        setBankcardPin("35910",136,"123456");
