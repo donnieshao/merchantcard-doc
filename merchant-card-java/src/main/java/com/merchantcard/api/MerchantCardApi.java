@@ -22,7 +22,9 @@ public class MerchantCardApi {
 
 
     // test env gateway
-    private static final String GATEWAY =  "https://test.moonbank.me/api-web";
+//    private static final String GATEWAY =  "https://test.moonbank.me/api-web";
+    private static final String GATEWAY =  "http://127.0.0.1:8848/api-web";
+
     // APPID
     private static final String APP_ID = "app_447770";
     // SECRET
@@ -474,8 +476,51 @@ public class MerchantCardApi {
         }
     }
 
+    public static void  query3dsAuth(String authId,String uId) {
+        Auth3dsRequest request = new Auth3dsRequest();
+        request.setAuthId(authId);
+        String result = postData(uId, MerchantCardMethods.QUERY_3DSAUTH, request,null);
+        System.out.println("query3dsAuth response String:  " + result);
+        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
+        });
+        System.out.println("query3dsAuth response Object:  " + apiResponse);
+        if (apiResponse.isSuccess()) {
+            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
+            System.out.println("query3dsAuth encode result===>" + descStr);
+        }
+    }
+    public static void  approve3dsAuth(String authId,String uId) {
+        Auth3dsRequest request = new Auth3dsRequest();
+        request.setAuthId(authId);
+        String result = postData(uId, MerchantCardMethods.APPROVE_3DSAUTH, request,null);
+        System.out.println("approve3dsAuth response String:  " + result);
+        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
+        });
+        System.out.println("approve3dsAuth response Object:  " + apiResponse);
+        if (apiResponse.isSuccess()) {
+            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
+            System.out.println("approve3dsAuth encode result===>" + descStr);
+        }
+    }
+    public static void  reject3dsAuth(String authId,String uId) {
+        Auth3dsRequest request = new Auth3dsRequest();
+        request.setAuthId(authId);
+        String result = postData(uId, MerchantCardMethods.REJECT_3DSAUTH, request,null);
+        System.out.println("reject3dsAuth response String:  " + result);
+        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
+        });
+        System.out.println("reject3dsAuth response Object:  " + apiResponse);
+        if (apiResponse.isSuccess()) {
+            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
+            System.out.println("reject3dsAuth encode result===>" + descStr);
+        }
+    }
     public static void main(String[] args) {
-        getSystemClock();
+//        query3dsAuth("CTX3DS1617206022504481","35920");
+//        approve3dsAuth("CTX3DS1617206022504481","35920");
+        reject3dsAuth("CTX3DS1617206022504481","35920");
+
+//        getSystemClock();
 
 //        bankcardTemplateList();
 //        updateBankcardStatus();
