@@ -5,49 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6cd4c07-c249-4cbc-9bf0-557c770d69b1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP-signature-Demo/asinx-php-demo.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PHP-signature-Demo/image-base64-demo.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README_ZH.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/asinx-official-api-docs.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/asinx/api/AsinxPayApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/api/MerchantCardApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/asinx/constants/AsinxPayMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/constants/MerchantCardMethods.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/asinx/models/APApiBaseRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/APApiBaseRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/asinx/models/ApiResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/ApiResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/asinx/models/ApplyBankcardRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/ApplyBankcardRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/asinx/models/BankcardTemplateListRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/BankcardTemplateListRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/asinx/models/CloseBankcardRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/CloseBankcardRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/asinx/models/IdentificationVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/IdentificationVo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/asinx/models/KycCheckRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/KycCheckRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/asinx/models/KycGatewayRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/KycGatewayRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/asinx/models/QueryAccountAssetRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/QueryAccountAssetRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/asinx/models/QueryAccountRechargeRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/QueryAccountRechargeRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/asinx/models/QueryBankcardBalanceRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/QueryBankcardBalanceRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/asinx/models/QueryBankcardInfoRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/QueryBankcardInfoRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/asinx/models/QueryBankcardOrderRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/QueryBankcardOrderRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/asinx/models/QueryBankcardTransactionsRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/QueryBankcardTransactionsRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/asinx/models/QueryMerchantAssetRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/QueryMerchantAssetRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/asinx/models/QueryMerchantRechargeRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/QueryMerchantRechargeRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/asinx/models/RechargeBankcardRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/RechargeBankcardRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/asinx/models/SetBankcardPinRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/SetBankcardPinRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/asinx/models/SetCardHolderRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/SetCardHolderRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/asinx/models/SetUserInfoRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/SetUserInfoRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/asinx/models/SystemClockRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/SystemClockRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/asinx/models/UpdateBankcardStatusRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/UpdateBankcardStatusRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/asinx/models/UserInfoAddressVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/UserInfoAddressVo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/asinx/models/UserRechargeInfoRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/UserRechargeInfoRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/asinx/models/UserRegisterRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/UserRegisterRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/asinx/models/UserSetProfessionRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/UserSetProfessionRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/asinx/utils/APEncryptUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/utils/APEncryptUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/asinx/utils/AesAPIUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/utils/AesAPIUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/asinx/utils/Base64ImgUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/utils/Base64ImgUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/asinx/utils/MD5Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/utils/MD5Util.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/merchantcard/api/MerchantCardApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/api/MerchantCardApi.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +14,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="2i2iaUrBLK9PVHpkrHeIXpFPmE9" />
   <component name="ProjectViewState">
@@ -117,13 +76,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -171,6 +132,9 @@
       <workItem from="1718695138096" duration="1439000" />
       <workItem from="1718700353020" duration="10000" />
       <workItem from="1718700410148" duration="319000" />
+      <workItem from="1718701549331" duration="300000" />
+      <workItem from="1718718114682" duration="238000" />
+      <workItem from="1718759053843" duration="369000" />
     </task>
     <servers />
   </component>
