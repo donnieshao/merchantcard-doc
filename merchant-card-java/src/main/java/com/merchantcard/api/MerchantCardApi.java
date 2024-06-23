@@ -213,7 +213,7 @@ public class MerchantCardApi {
         request.setUserBankcardId(userBankcardId);
         request.setAmount(amount);
         request.setTargetAmount(targetAmount);
-        String result = postData(uId, MerchantCardMethods.RECHARGE_BANKCARD, request,"ohweofhwoefhowehfouhwouh");
+        String result = postData(uId, MerchantCardMethods.RECHARGE_BANKCARD, request,null);
         System.out.println("rechargeBankcard response String:  " + result);
         ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
         });
@@ -409,6 +409,21 @@ public class MerchantCardApi {
         }
     }
 
+    public static void merchantHistoryLogs() {
+        QueryMerchantHistoryLogsRequest request = new QueryMerchantHistoryLogsRequest();
+        request.setPageSize(10);
+        request.setPageNum(1);
+        String result = postData(null, MerchantCardMethods.MERCHANT_HISTORY_LOGS, request,null);
+        System.out.println("merchantHistoryLogs response String:  " + result);
+        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
+        });
+        System.out.println("merchantHistoryLogs response Object:  " + apiResponse);
+        if (apiResponse.isSuccess()) {
+            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
+            System.out.println("merchantHistoryLogs encode result===>" + descStr);
+        }
+    }
+
     public static void updateBankcardStatus(String uId, Integer userBankcardId,boolean enable) {
         UpdateBankcardStatusRequest request = new UpdateBankcardStatusRequest();
         request.setEnable(enable);
@@ -482,11 +497,12 @@ public class MerchantCardApi {
 //        userRegister("86","11032120","_test@asinx.io");
 //        setUserProfession("35920");
 //        applyBankcard("36061",24,null,"KR");
-//        rechargeBankcard("36061",19306,new BigDecimal(8),new BigDecimal(50));
+//        rechargeBankcard("36065",19319,new BigDecimal(8),new BigDecimal(50));
+        merchantHistoryLogs();
 //        closeBankcard("36061",19306);
 //        queryBankcardOrder("36046",19280,"CLOSE2406031639263553919");
 //        updateBankcardStatus("36059",19300,true);
-        setUserInfo("36064");
+//        setUserInfo("36064");
 //        kycCheck("36064");
 
 
