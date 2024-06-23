@@ -23,6 +23,8 @@ public class MerchantCardMethods {
     // set card atm pin
     public static String SET_BANKCARD_PIN = "/bankcard/setPin";
 
+    public static String GET_PIN="/bankcard/getPin";
+
     // query bankcard transactions
     public static String QUERY_BANKCARD_TRANSACTIONS = "/bankcard/transactions";
 
@@ -64,4 +66,13 @@ public class MerchantCardMethods {
     public static String SET_USER_INFO="/user/setUserInfo";
 
     public static String KYC_CHECK="/user/kycCheck";
+
+    public static String APPROVE_3DSAUTH="/bankcard/approve/3dsAuth";
+
+    public static String REJECT_3DSAUTH="/bankcard/reject/3dsAuth";
+
+    public static String QUERY_3DSAUTH="/bankcard/query/3dsAuth";
+
+
+    public static String USD_TO_EUR="/bankcard/getEURAmount";
 }
