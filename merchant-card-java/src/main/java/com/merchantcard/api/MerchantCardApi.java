@@ -19,7 +19,7 @@ import java.nio.charset.StandardCharsets;
 public class MerchantCardApi {
 
     // test env gateway
-    private static final String GATEWAY =  "https://test.moonbank.me/api-web";
+    private static final String GATEWAY =  "https://test.asinx.io/api-web";
     // APPID
     private static final String APP_ID = "app_447770";
     // SECRET
@@ -31,13 +31,13 @@ public class MerchantCardApi {
     private static final int NOTIFY_CONNECT_TIMEOUT = 1000;
 
     // if use proxy ,set this value true
-    private static boolean useProxy = false;
+    private static boolean useProxy = true;
 
     // proxy ip
     private static String proxyAddress = "127.0.0.1";
 
     // proxy port
-    private static int proxyPort = 7070;
+    private static int proxyPort = 7890;
 
 
     /**
@@ -486,6 +486,19 @@ public class MerchantCardApi {
         }
     }
 
+    public static void  kycStatus(String uId) {
+        APApiBaseRequest request = new APApiBaseRequest(){};
+        String result = postData(uId, MerchantCardMethods.KYC_STATUS, request,null);
+        System.out.println("kycStatus response String:  " + result);
+        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
+        });
+        System.out.println("kycStatus response Object:  " + apiResponse);
+        if (apiResponse.isSuccess()) {
+            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
+            System.out.println("kycStatus encode result===>" + descStr);
+        }
+    }
+
     public static void  query3dsAuth(String authId,String uId) {
         Auth3dsRequest request = new Auth3dsRequest();
         request.setAuthId(authId);
@@ -567,20 +580,20 @@ public class MerchantCardApi {
 
 //        userRegister("86","11032120","_test@asinx.io");
 //        setUserProfession("35920");
-//        applyBankcard("36061",24,null,"KR");
-//        rechargeBankcard("36065",19319,new BigDecimal(8),new BigDecimal(50));
-        merchantHistoryLogs();
-//        closeBankcard("36061",19306);
+//        applyBankcard("1",54,null,"KR");
+//        rechargeBankcard("1",20381,new BigDecimal(8),new BigDecimal(12));
+//        merchantHistoryLogs();
+//        closeBankcard("1",20381);
 //        queryBankcardOrder("36046",19280,"CLOSE2406031639263553919");
 //        updateBankcardStatus("36059",19300,true);
 //        setUserInfo("36064");
 //        kycCheck("36064");
-
+            kycStatus("26608");
 
 //        setBankcardPin("35910",136,"123456");
 //        queryBankcardTransactions("35974",19163);
-//        queryBankcardBalance("35987",19250);
-//        queryBankcardInfo("36046",19280);
+//        queryBankcardBalance("1",20362);
+//        queryBankcardInfo("1",20362);
 //        userUSDRechargeInfo("35910",new BigDecimal(2));
 //        accountAsset();
 //        accountRecharge();

@@ -23,7 +23,7 @@ public class MerchantCardMethods {
     // set card atm pin
     public static String SET_BANKCARD_PIN = "/bankcard/setPin";
 
-    public static String GET_PIN="/bankcard/getPin";
+    public static String GET_PIN = "/bankcard/getPin";
 
     // query bankcard transactions
     public static String QUERY_BANKCARD_TRANSACTIONS = "/bankcard/transactions";
@@ -59,20 +59,22 @@ public class MerchantCardMethods {
     public static String CLOSE_CARD = "/bankcard/close";
 
 
-    public static String SET_HOLDER_INFO="/user/setHolderInfo";
+    public static String SET_HOLDER_INFO = "/user/setHolderInfo";
 
-    public static String CARD_ORDER="/bankcard/cardOrderInfo";
+    public static String CARD_ORDER = "/bankcard/cardOrderInfo";
 
-    public static String SET_USER_INFO="/user/setUserInfo";
+    public static String SET_USER_INFO = "/user/setUserInfo";
 
-    public static String KYC_CHECK="/user/kycCheck";
+    public static String KYC_CHECK = "/user/kycCheck";
 
-    public static String APPROVE_3DSAUTH="/bankcard/approve/3dsAuth";
+    public static String KYC_STATUS = "/user/kycStatus";
 
-    public static String REJECT_3DSAUTH="/bankcard/reject/3dsAuth";
+    public static String APPROVE_3DSAUTH = "/bankcard/approve/3dsAuth";
 
-    public static String QUERY_3DSAUTH="/bankcard/query/3dsAuth";
+    public static String REJECT_3DSAUTH = "/bankcard/reject/3dsAuth";
+
+    public static String QUERY_3DSAUTH = "/bankcard/query/3dsAuth";
 
 
-    public static String USD_TO_EUR="/bankcard/getEURAmount";
+    public static String USD_TO_EUR = "/bankcard/getEURAmount";
 }

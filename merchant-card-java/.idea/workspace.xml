@@ -5,15 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6cd4c07-c249-4cbc-9bf0-557c770d69b1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/QueryMerchantHistoryLogsRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/merchantcard/api/MerchantCardApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/api/MerchantCardApi.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/merchantcard/constants/MerchantCardMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/constants/MerchantCardMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/merchantcard/utils/AesAPIUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/utils/AesAPIUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -38,9 +46,9 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="http.proxy" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -59,6 +67,20 @@
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <module />
       <method />
+    </configuration>
+    <configuration name="AesAPIUtils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.merchantcard.utils.AesAPIUtils" />
+      <module name="merchant-card-java" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.merchantcard.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="Base64ImgUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.merchantcard.utils.Base64ImgUtil" />
@@ -81,6 +103,20 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.merchantcard.api.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NotifyProcessUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.merchantcard.utils.NotifyProcessUtil" />
+      <module name="merchant-card-java" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.merchantcard.utils.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -133,6 +169,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.MerchantCardApi" />
+        <item itemvalue="Application.AesAPIUtils" />
+        <item itemvalue="Application.NotifyProcessUtil" />
         <item itemvalue="Application.Base64ImgUtil" />
       </list>
     </recent_temporary>
@@ -151,7 +189,12 @@
       <workItem from="1718701549331" duration="300000" />
       <workItem from="1718718114682" duration="238000" />
       <workItem from="1718759053843" duration="2414000" />
-      <workItem from="1719133093935" duration="836000" />
+      <workItem from="1719133093935" duration="1043000" />
+      <workItem from="1719134350466" duration="2311000" />
+      <workItem from="1719302890640" duration="1687000" />
+      <workItem from="1719381748624" duration="7703000" />
+      <workItem from="1719589744841" duration="21000" />
+      <workItem from="1719821052623" duration="2595000" />
     </task>
     <servers />
   </component>
