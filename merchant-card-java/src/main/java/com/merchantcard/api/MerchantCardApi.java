@@ -15,11 +15,12 @@ import java.math.BigDecimal;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.nio.charset.StandardCharsets;
+import java.util.Date;
 
 public class MerchantCardApi {
 
     // test env gateway
-    private static final String GATEWAY =  "https://test.asinx.io/api-web";
+    private static final String GATEWAY =  "https://test.moonbank.me/api-web";
     // APPID
     private static final String APP_ID = "app_447770";
     // SECRET
@@ -37,7 +38,7 @@ public class MerchantCardApi {
     private static String proxyAddress = "127.0.0.1";
 
     // proxy port
-    private static int proxyPort = 7890;
+    private static int proxyPort = 7070;
 
 
     /**
@@ -73,6 +74,19 @@ public class MerchantCardApi {
         }
     }
 
+    public static void merchantRechargeInfo() {
+        BankcardRechargeInfoRequest request = new BankcardRechargeInfoRequest();
+        String result = postData(null, MerchantCardMethods.MERCHANT_RECHARGE_INFO, request,null);
+        System.out.println("merchantRechargeInfo response String:  " + result);
+        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
+        });
+        System.out.println("merchantRechargeInfo response Object:  " + apiResponse);
+        if (apiResponse.isSuccess()) {
+            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
+            System.out.println("merchantRechargeInfo encode result===>" + descStr);
+        }
+    }
+
     /**
      * user register,get user unique ID
      *
@@ -97,21 +111,23 @@ public class MerchantCardApi {
 
     public static void setUserInfo(String uId) {
         SetUserInfoRequest request = new SetUserInfoRequest();
-        request.setFirstName("三");
-        request.setLastName("张");
-        request.setFirstNameEnglish("San");
-        request.setLastNameEnglish("Zhang");
+        request.setFirstName("琴");
+        request.setLastName("陆");
+        request.setFirstNameEnglish("QIN");
+        request.setLastNameEnglish("LU");
         request.setNationality("CN");
-        request.setDateOfBirth("1999-01-01");
+        request.setDateOfBirth("1971-03-07");
         UserInfoAddressVo addressVo = new UserInfoAddressVo();
-        addressVo.setAddressLine1("Chaoyang ,baiziwan");
-        addressVo.setCity("Beijing");
+        addressVo.setAddressLine1("Sanjing Village, Zhongxin Town, Zengcheng District");
+        addressVo.setCity("guangzhou");
         addressVo.setCountryCode("CN");
         request.setAddress(addressVo);
         IdentificationVo identificationVo = new IdentificationVo();
-        identificationVo.setIdentificationNumber("Abc123");
+        identificationVo.setIdentificationNumber("EK4458163");
         identificationVo.setIdentificationType("PASSPORT");
-        identificationVo.setIdentificationExpiryDate("2029-02-14");
+        identificationVo.setIdentificationExpiryDate("2033-05-15");
+//        identificationVo.setVisaNumber("33848167");
+//        identificationVo.setVisaExpiryDate("2025-05-26");
         request.setIdentification(identificationVo);
         String result = postData(uId, MerchantCardMethods.SET_USER_INFO, request,null);
         System.out.println("setUserInfo response String:  " + result);
@@ -121,59 +137,6 @@ public class MerchantCardApi {
         if (apiResponse.isSuccess()) {
             String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
             System.out.println("setUserInfo encode result===>" + descStr);
-        }
-    }
-
-    /**
-     * set user profession and user info
-     *
-     * @param uId
-     */
-    public static void setUserProfession(String uId) {
-        UserSetProfessionRequest request = new UserSetProfessionRequest();
-        request.setFirst_name("ming");
-        request.setFirst_name_en("ming");
-        request.setLast_name("li");
-        request.setLast_name_en("li");
-        request.setBirthday("2000-01-01");
-        request.setId_type("passport");
-        request.setCountry("CN");
-        request.setNumber("123456");
-        request.setExpiry_date("2027-01-01");
-        // TODO 路径按需修改
-        request.setFrontImg(Base64ImgUtil.GetImageStr("/Users/donnie/asinx-official-api-docs/src/main/resources/passport1.jpg", "jpg"));
-        request.setBackImg(Base64ImgUtil.GetImageStr("/Users/donnie/asinx-official-api-docs/src/main/resources/passport2.jpg", "jpg"));
-        String result = postData(uId, MerchantCardMethods.SET_USER_PROFESSION, request,null);
-        System.out.println("setUserProfession response String:  " + result);
-        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
-        });
-        System.out.println("setUserProfession response Object:  " + apiResponse);
-        if (apiResponse.isSuccess()) {
-            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
-            System.out.println("setUserProfession encode result===>" + descStr);
-        }
-    }
-
-    public static void setHolderInfo(String uId) {
-        SetCardHolderRequest request = new SetCardHolderRequest();
-        request.setFirstName("ming");
-        request.setLastName("ming");
-        request.setPhoneNumber("123456");
-        request.setCountryCode("CN");
-        request.setResidentialAddressCity("BJ");
-        request.setResidentialAddressCountry("China");
-        request.setResidentialAddressLine1("line1");
-        request.setResidentialAddressLine2("line2");
-        request.setResidentialAddressState("BJ");
-        request.setResidentialAddressPostalCode("10010");
-        String result = postData(uId, MerchantCardMethods.SET_HOLDER_INFO, request,null);
-        System.out.println("setHolderInfo response String:  " + result);
-        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
-        });
-        System.out.println("setHolderInfo response Object:  " + apiResponse);
-        if (apiResponse.isSuccess()) {
-            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
-            System.out.println("setHolderInfo encode result===>" + descStr);
         }
     }
 
@@ -224,28 +187,6 @@ public class MerchantCardApi {
         }else{
             String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
             System.out.println("failed rechargeBankcard encode result===>" + descStr);
-        }
-    }
-
-    /**
-     * set bankcard pin
-     *
-     * @param uId
-     * @param userBankcardId
-     * @param pin
-     */
-    public static void setBankcardPin(String uId, Integer userBankcardId, String pin) {
-        SetBankcardPinRequest request = new SetBankcardPinRequest();
-        request.setUserBankcardId(userBankcardId);
-        request.setPin(pin);
-        String result = postData(uId, MerchantCardMethods.SET_BANKCARD_PIN, request,null);
-        System.out.println("setBankcardPin response String:  " + result);
-        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
-        });
-        System.out.println("setBankcardPin response Object:  " + apiResponse);
-        if (apiResponse.isSuccess()) {
-            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
-            System.out.println("setBankcardPin encode result===>" + descStr);
         }
     }
 
@@ -328,59 +269,6 @@ public class MerchantCardApi {
         }
     }
 
-    /**
-     * uer recharge info
-     *
-     * @param uId
-     */
-    public static void userUSDRechargeInfo(String uId, BigDecimal amount) {
-        UserRechargeInfoRequest request = new UserRechargeInfoRequest();
-        request.setAmount(amount);
-        String result = postData(uId, MerchantCardMethods.USD_RECHARGE_INFO, request,null);
-        System.out.println("userRechargeInfo response String:  " + result);
-        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
-        });
-        System.out.println("userRechargeInfo response Object:  " + apiResponse);
-        if (apiResponse.isSuccess()) {
-            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
-            System.out.println("userRechargeInfo encode result===>" + descStr);
-        }
-    }
-
-    /**
-     *
-     */
-    @Deprecated
-    public static void accountAsset() {
-        QueryMerchantAssetRequest request = new QueryMerchantAssetRequest();
-        String result = postData(null, MerchantCardMethods.USER_ACCOUNT_ASSET, request,null);
-        System.out.println("AccountAsset response String:  " + result);
-        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
-        });
-        System.out.println("AccountAsset response Object:  " + apiResponse);
-        if (apiResponse.isSuccess()) {
-            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
-            System.out.println("AccountAsset encode result===>" + descStr);
-        }
-    }
-
-    public static void accountRecharge() {
-        QueryAccountRechargeRequest request = new QueryAccountRechargeRequest();
-        request.setPageSize(10);
-//        request.setUid("ewaoaylm5ueywbib");
-//        request.setSymbol("USDT");
-        request.setPageNum(1);
-        String result = postData(null, MerchantCardMethods.USER_ACCOUNT_USER_RECHARGE, request,null);
-        System.out.println("accountRecharge response String:  " + result);
-        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
-        });
-        System.out.println("merchantAsset response Object:  " + apiResponse);
-        if (apiResponse.isSuccess()) {
-            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
-            System.out.println("accountRecharge encode result===>" + descStr);
-        }
-    }
-
     public static void merchantAsset() {
         QueryMerchantAssetRequest request = new QueryMerchantAssetRequest();
         String result = postData(null, MerchantCardMethods.MERCHANT_ASSET, request,null);
@@ -391,21 +279,6 @@ public class MerchantCardApi {
         if (apiResponse.isSuccess()) {
             String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
             System.out.println("accountRecharge encode result===>" + descStr);
-        }
-    }
-
-    public static void merchantRecharge() {
-        QueryMerchantRechargeRequest request = new QueryMerchantRechargeRequest();
-        request.setPageSize(10);
-        request.setPageNum(1);
-        String result = postData(null, MerchantCardMethods.MERCHANT_RECHARGE, request,null);
-        System.out.println("merchantRecharge response String:  " + result);
-        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
-        });
-        System.out.println("merchantRecharge response Object:  " + apiResponse);
-        if (apiResponse.isSuccess()) {
-            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
-            System.out.println("merchantRecharge encode result===>" + descStr);
         }
     }
 
@@ -421,6 +294,22 @@ public class MerchantCardApi {
         if (apiResponse.isSuccess()) {
             String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
             System.out.println("merchantHistoryLogs encode result===>" + descStr);
+        }
+    }
+
+    public static void ActiveBankcard(String uId,Integer templateId, String cardNo) {
+        BankcardActiveRequest request = new BankcardActiveRequest();
+        request.setTemplateId(templateId);
+        request.setCardNo(cardNo);
+
+        String result = postData(uId, MerchantCardMethods.ACTIVE_CARDS, request,null);
+        System.out.println("ActiveBankcard response String:  " + result);
+        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
+        });
+        System.out.println("ActiveBankcard response Object:  " + apiResponse);
+        if (apiResponse.isSuccess()) {
+            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
+            System.out.println("ActiveBankcard encode result===>" + descStr);
         }
     }
 
@@ -452,22 +341,6 @@ public class MerchantCardApi {
         if (apiResponse.isSuccess()) {
             String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
             System.out.println("closeBankcard encode result===>" + descStr);
-        }
-    }
-
-    @Deprecated
-    public static void  kycGateway() {
-        KycGatewayRequest request = new KycGatewayRequest();
-        request.setDoneViewURL("https://www.asinx.io/done");
-        request.setTimeoutViewURL("https://www.asinx.io/timeout");
-        String result = postData(null, MerchantCardMethods.KYC_GATEWAY, request,null);
-        System.out.println("kycGateway response String:  " + result);
-        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
-        });
-        System.out.println("kycGateway response Object:  " + apiResponse);
-        if (apiResponse.isSuccess()) {
-            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
-            System.out.println("kycGateway encode result===>" + descStr);
         }
     }
 
@@ -565,40 +438,37 @@ public class MerchantCardApi {
         }
     }
     public static void main(String[] args) {
+//1        userRegister("86","123321009","koren_demo@asinx.io");
+//2        setUserInfo("30156");
+//3        kycCheck("30156");
+//4        kycStatus("30156");
+//5        getPin(19290,"35968")
 //        query3dsAuth("CTX3DS1617206022504481","35920");
 //        approve3dsAuth("CTX3DS1617206022504481","35920");
 //        reject3dsAuth("CTX3DS1617206022504481","35920");
-//        getPin(19290,"35968");
+//;
 //        usdToEur(BigDecimal.TEN,"35920");
-
+//
 //        getSystemClock();
-
+//
 //        bankcardTemplateList();
-//        updateBankcardStatus();
-//        setHolderInfo("35920");
-//        kycGateway();
-
-//        userRegister("86","11032120","_test@asinx.io");
-//        setUserProfession("35920");
 //        applyBankcard("1",54,null,"KR");
-//        rechargeBankcard("1",20381,new BigDecimal(8),new BigDecimal(12));
+//
+//        Date start = new Date();
+//        rechargeBankcard("36136",19428,new BigDecimal(8),new BigDecimal(20));
+//        Date end = new Date();
+//        System.out.println((end.getTime()-start.getTime()+ "ms"));
 //        merchantHistoryLogs();
 //        closeBankcard("1",20381);
 //        queryBankcardOrder("36046",19280,"CLOSE2406031639263553919");
-//        updateBankcardStatus("36059",19300,true);
-//        setUserInfo("36064");
-//        kycCheck("36064");
-            kycStatus("26608");
-
-//        setBankcardPin("35910",136,"123456");
-//        queryBankcardTransactions("35974",19163);
+//        updateBankcardStatus("1",20362,true);
+//
+//
+//        queryBankcardTransactions("29061",20585);
 //        queryBankcardBalance("1",20362);
 //        queryBankcardInfo("1",20362);
-//        userUSDRechargeInfo("35910",new BigDecimal(2));
-//        accountAsset();
-//        accountRecharge();
 //        merchantAsset();
-//        merchantRecharge();
+//        merchantRechargeInfo();
     }
 
     /**

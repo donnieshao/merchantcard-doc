@@ -11,9 +11,6 @@ public class MerchantCardMethods {
     // user register
     public static String USER_REGISTER = "/user/register";
 
-    // set user profession
-    public static String SET_USER_PROFESSION = "/user/setProfession";
-
     // apply the bankcard
     public static String APPLY_BANKCARD = "/bankcard/apply";
 
@@ -34,32 +31,20 @@ public class MerchantCardMethods {
     // query bankcard info
     public static String QUERY_BANKCARD_INFO = "/bankcard/cardInfo";
 
-    // query user usd recharge info
-    public static String USD_RECHARGE_INFO = "/user/usdRechargeInfo";
-
-    public static String USER_ACCOUNT_ASSET = "/account/asset";
-
-    public static String USER_ACCOUNT_USER_RECHARGE = "/account/user/rechargeList";
-
     // 商户资产信息
     public static String MERCHANT_ASSET = "/merchant/asset";
 
-    // 商户充值记录
-    public static String MERCHANT_RECHARGE = "/merchant/rechargeList";
+    public static String MERCHANT_RECHARGE_INFO = "/merchant/rechargeInfo";
 
     public static String MERCHANT_HISTORY_LOGS = "/merchant/HistoryLogs";
 
-    // kyc
-    public static String KYC_GATEWAY = "/kyc/gateway";
+    public static String ACTIVE_CARDS ="/bankcard/activatecard";
 
     // update bankcard status
     public static String UPDATE_CARD_STATUS = "/bankcard/update/status";
 
     // close bankcard
     public static String CLOSE_CARD = "/bankcard/close";
-
-
-    public static String SET_HOLDER_INFO = "/user/setHolderInfo";
 
     public static String CARD_ORDER = "/bankcard/cardOrderInfo";
 

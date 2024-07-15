@@ -13,4 +13,11 @@ public class IdentificationVo {
      * identification Expiry Date:yyyy-MM-dd ,Example: 2022-10-01
      */
     private String identificationExpiryDate;
+
+    private String visaNumber;
+
+    /**
+     *
+     */
+    private String visaExpiryDate;
 }
