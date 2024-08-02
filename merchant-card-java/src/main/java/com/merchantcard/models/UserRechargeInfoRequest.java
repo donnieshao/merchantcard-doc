@@ -6,6 +6,5 @@ import java.math.BigDecimal;
 
 @Data
 public class UserRechargeInfoRequest extends APApiBaseRequest {
-    private String currency;
     private BigDecimal amount;
 }

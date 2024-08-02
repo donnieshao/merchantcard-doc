@@ -111,23 +111,24 @@ public class MerchantCardApi {
 
     public static void setUserInfo(String uId) {
         SetUserInfoRequest request = new SetUserInfoRequest();
-        request.setFirstName("琴");
-        request.setLastName("陆");
-        request.setFirstNameEnglish("QIN");
-        request.setLastNameEnglish("LU");
+        request.setFirstName("Li");
+        request.setLastName("Wan");
+        request.setFirstNameEnglish("Li");
+        request.setLastNameEnglish("Wan");
         request.setNationality("CN");
-        request.setDateOfBirth("1971-03-07");
+        request.setDateOfBirth("1997-02-04");
         UserInfoAddressVo addressVo = new UserInfoAddressVo();
-        addressVo.setAddressLine1("Sanjing Village, Zhongxin Town, Zengcheng District");
-        addressVo.setCity("guangzhou");
+        addressVo.setAddressLine1("No. 328, Changshou Road, Putuo District");
+        addressVo.setCity("shanghai");
+        addressVo.setPostCode("200050");
         addressVo.setCountryCode("CN");
         request.setAddress(addressVo);
         IdentificationVo identificationVo = new IdentificationVo();
-        identificationVo.setIdentificationNumber("EK4458163");
+        identificationVo.setIdentificationNumber("EK1783607");
         identificationVo.setIdentificationType("PASSPORT");
-        identificationVo.setIdentificationExpiryDate("2033-05-15");
-//        identificationVo.setVisaNumber("33848167");
-//        identificationVo.setVisaExpiryDate("2025-05-26");
+        identificationVo.setIdentificationExpiryDate("2030-03-22");
+        identificationVo.setVisaNumber("AB8605515");
+        identificationVo.setVisaExpiryDate("2028-05-19");
         request.setIdentification(identificationVo);
         String result = postData(uId, MerchantCardMethods.SET_USER_INFO, request,null);
         System.out.println("setUserInfo response String:  " + result);
@@ -437,25 +438,46 @@ public class MerchantCardApi {
             System.out.println("usdToEur encode result===>" + descStr);
         }
     }
+
+    /**
+     * payment gateway
+     * @param uId
+     * @param amount
+     */
+    public static void  usdRecharge(String uId,BigDecimal amount) {
+        UserRechargeInfoRequest request = new UserRechargeInfoRequest();
+        request.setAmount(amount);
+        String result = postData(uId, MerchantCardMethods.USD_RECHARGE, request,null);
+        System.out.println("usdRecharge response String:  " + result);
+        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
+        });
+        System.out.println("usdRecharge response Object:  " + apiResponse);
+        if (apiResponse.isSuccess()) {
+            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
+            System.out.println("usdRecharge encode result===>" + descStr);
+        }
+    }
+
     public static void main(String[] args) {
-//1        userRegister("86","123321009","koren_demo@asinx.io");
-//2        setUserInfo("30156");
-//3        kycCheck("30156");
-//4        kycStatus("30156");
+//    userRegister("86","12328328","pintopay_test@asinx.io");
+//      setUserInfo("30622");
+//       kycCheck("30622");
+//       kycStatus("31069");
 //5        getPin(19290,"35968")
 //        query3dsAuth("CTX3DS1617206022504481","35920");
 //        approve3dsAuth("CTX3DS1617206022504481","35920");
 //        reject3dsAuth("CTX3DS1617206022504481","35920");
 //;
 //        usdToEur(BigDecimal.TEN,"35920");
+        usdRecharge("1",new BigDecimal(10));
 //
 //        getSystemClock();
 //
 //        bankcardTemplateList();
-//        applyBankcard("1",54,null,"KR");
+//        applyBankcard("36287",52,null,"KR");
 //
 //        Date start = new Date();
-//        rechargeBankcard("36136",19428,new BigDecimal(8),new BigDecimal(20));
+//        rechargeBankcard("36287",19656,new BigDecimal(8),new BigDecimal(150));
 //        Date end = new Date();
 //        System.out.println((end.getTime()-start.getTime()+ "ms"));
 //        merchantHistoryLogs();
@@ -464,9 +486,9 @@ public class MerchantCardApi {
 //        updateBankcardStatus("1",20362,true);
 //
 //
-//        queryBankcardTransactions("29061",20585);
-//        queryBankcardBalance("1",20362);
-//        queryBankcardInfo("1",20362);
+//        queryBankcardTransactions("28886",20569);
+//        queryBankcardBalance("31370",20807);
+//        queryBankcardInfo("32246",19996);
 //        merchantAsset();
 //        merchantRechargeInfo();
     }

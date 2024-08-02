@@ -60,6 +60,7 @@ public class MerchantCardMethods {
 
     public static String QUERY_3DSAUTH = "/bankcard/query/3dsAuth";
 
-
     public static String USD_TO_EUR = "/bankcard/getEURAmount";
+
+    public static String USD_RECHARGE = "/user/usdRechargeInfo";
 }

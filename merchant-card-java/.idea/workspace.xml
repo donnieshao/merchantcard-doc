@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6cd4c07-c249-4cbc-9bf0-557c770d69b1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/BankcardActiveRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/BankcardRechargeInfoRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/merchantcard/api/MerchantCardApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/api/MerchantCardApi.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/merchantcard/constants/MerchantCardMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/constants/MerchantCardMethods.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/IdentificationVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/IdentificationVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/UserRechargeInfoRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/UserRechargeInfoRequest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,6 +129,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -188,11 +199,27 @@
       <workItem from="1719972350980" duration="11621000" />
       <workItem from="1720487056087" duration="1611000" />
       <workItem from="1720594304388" duration="9778000" />
-      <workItem from="1721012068397" duration="1295000" />
+      <workItem from="1721012068397" duration="3340000" />
+      <workItem from="1721114635880" duration="6651000" />
+      <workItem from="1721457008942" duration="1243000" />
+      <workItem from="1721629174411" duration="5912000" />
+      <workItem from="1722009448753" duration="762000" />
+      <workItem from="1722396462778" duration="3932000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/merchantcard/api/MerchantCardApi.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
