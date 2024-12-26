@@ -38,6 +38,8 @@ public class MerchantCardMethods {
 
     public static String MERCHANT_HISTORY_LOGS = "/merchant/HistoryLogs";
 
+    public static String MERCHANT_RECHARGE_RECORDS = "/merchant/rechargeList";
+
     public static String ACTIVE_CARDS ="/bankcard/activatecard";
 
     // update bankcard status

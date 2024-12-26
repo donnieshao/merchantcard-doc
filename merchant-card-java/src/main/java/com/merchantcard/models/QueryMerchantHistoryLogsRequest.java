@@ -6,4 +6,6 @@ import lombok.Data;
 public class QueryMerchantHistoryLogsRequest extends APApiBaseRequest {
     private Integer pageNum;
     private Integer pageSize;
+    private Long fromTimestamp;
+    private Long endTimestamp;
 }

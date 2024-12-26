@@ -2,6 +2,7 @@ package com.merchantcard.api;
 
 import cn.hutool.http.HttpRequest;
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.merchantcard.constants.MerchantCardMethods;
 import com.merchantcard.models.ApiResponse;
@@ -11,18 +12,21 @@ import com.merchantcard.models.SystemClockRequest;
 import com.merchantcard.utils.Base64ImgUtil;
 import com.merchantcard.utils.APEncryptUtil;
 import com.google.common.base.Strings;
+
 import java.math.BigDecimal;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class MerchantCardApi {
 
     // test env gateway
-    private static final String GATEWAY =  "https://test.moonbank.me/api-web";
+    private static final String GATEWAY = "https://test.asinx.io/api-web";
     // APPID
-    private static final String APP_ID = "app_447770";
+    private static final String APP_ID = "app_36701";
     // SECRET
     private static String APP_SECRET = "b635dd5c87f7bf73387929203321b1e1";
 
@@ -38,7 +42,7 @@ public class MerchantCardApi {
     private static String proxyAddress = "127.0.0.1";
 
     // proxy port
-    private static int proxyPort = 7070;
+    private static int proxyPort = 7890;
 
 
     /**
@@ -47,7 +51,7 @@ public class MerchantCardApi {
     public static void getSystemClock() {
 
         SystemClockRequest request = new SystemClockRequest();
-        String result = postData(null, MerchantCardMethods.SYS_CLOCK, request,null);
+        String result = postData(null, MerchantCardMethods.SYS_CLOCK, request, null);
         System.out.println("getSystemClock response String:  " + result);
         ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
         });
@@ -63,7 +67,7 @@ public class MerchantCardApi {
      */
     public static void bankcardTemplateList() {
         BankcardTemplateListRequest request = new BankcardTemplateListRequest();
-        String result = postData(null, MerchantCardMethods.BANKCARD_TEMPLATE_LIST, request,null);
+        String result = postData(null, MerchantCardMethods.BANKCARD_TEMPLATE_LIST, request, null);
         System.out.println("bankcardTemplateList response String:  " + result);
         ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
         });
@@ -76,7 +80,7 @@ public class MerchantCardApi {
 
     public static void merchantRechargeInfo() {
         BankcardRechargeInfoRequest request = new BankcardRechargeInfoRequest();
-        String result = postData(null, MerchantCardMethods.MERCHANT_RECHARGE_INFO, request,null);
+        String result = postData(null, MerchantCardMethods.MERCHANT_RECHARGE_INFO, request, null);
         System.out.println("merchantRechargeInfo response String:  " + result);
         ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
         });
@@ -98,7 +102,7 @@ public class MerchantCardApi {
         request.setMobilePrefix(mobilePrefix);
         request.setMobileNumber(mobileNumber);
         request.setEmail(email);
-        String result = postData(null, MerchantCardMethods.USER_REGISTER, request,null);
+        String result = postData(null, MerchantCardMethods.USER_REGISTER, request, null);
         System.out.println("userRegister response String:  " + result);
         ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
         });
@@ -130,7 +134,7 @@ public class MerchantCardApi {
         identificationVo.setVisaNumber("AB8605515");
         identificationVo.setVisaExpiryDate("2028-05-19");
         request.setIdentification(identificationVo);
-        String result = postData(uId, MerchantCardMethods.SET_USER_INFO, request,null);
+        String result = postData(uId, MerchantCardMethods.SET_USER_INFO, request, null);
         System.out.println("setUserInfo response String:  " + result);
         ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
         });
@@ -148,13 +152,13 @@ public class MerchantCardApi {
      * @param bankcardId
      * @param residenceAddress
      */
-    public static void applyBankcard(String uId, Integer bankcardId, Integer userBankcardId, String residenceAddress) {
+    public static Integer applyBankcard(String uId, Integer bankcardId, Integer userBankcardId, String residenceAddress) {
         ApplyBankcardRequest request = new ApplyBankcardRequest();
         request.setBankcardId(bankcardId);
 //        request.setUserBankcardId(userBankcardId);
         request.setResidenceAddress(residenceAddress);
 //        request.setTag("111111liwheefowhfoij");
-        String result = postData(uId, MerchantCardMethods.APPLY_BANKCARD, request,null);
+        String result = postData(uId, MerchantCardMethods.APPLY_BANKCARD, request, null);
         System.out.println("applyBankcard response String:  " + result);
         ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
         });
@@ -162,7 +166,11 @@ public class MerchantCardApi {
         if (apiResponse.isSuccess()) {
             String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
             System.out.println("applyBankcard encode result===>" + descStr);
+
+            JSONObject json = JSON.parseObject(descStr);
+            return json.getInteger("userBankcardId");
         }
+        return null;
     }
 
     /**
@@ -177,7 +185,7 @@ public class MerchantCardApi {
         request.setUserBankcardId(userBankcardId);
         request.setAmount(amount);
         request.setTargetAmount(targetAmount);
-        String result = postData(uId, MerchantCardMethods.RECHARGE_BANKCARD, request,null);
+        String result = postData(uId, MerchantCardMethods.RECHARGE_BANKCARD, request, null);
         System.out.println("rechargeBankcard response String:  " + result);
         ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
         });
@@ -185,7 +193,7 @@ public class MerchantCardApi {
         if (apiResponse.isSuccess()) {
             String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
             System.out.println("success rechargeBankcard encode result===>" + descStr);
-        }else{
+        } else {
             String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
             System.out.println("failed rechargeBankcard encode result===>" + descStr);
         }
@@ -200,11 +208,11 @@ public class MerchantCardApi {
     public static void queryBankcardTransactions(String uId, Integer userBankcardId) {
         QueryBankcardTransactionsRequest request = new QueryBankcardTransactionsRequest();
         request.setUserBankcardId(userBankcardId);
-//        request.setFromTimestamp(1690878577000L);
-//        request.setEndTimestamp(1690878578000L);
-        request.setPageSize(100);
-        request.setPageNum(1);
-        String result = postData(uId, MerchantCardMethods.QUERY_BANKCARD_TRANSACTIONS, request,null);
+        request.setFromTimestamp(1729440000000L);
+        request.setEndTimestamp(1729871999000L);
+//        request.setPageSize(100);
+//        request.setPageNum(1);
+        String result = postData(uId, MerchantCardMethods.QUERY_BANKCARD_TRANSACTIONS, request, null);
         System.out.println("queryBankcardTransactions response String:  " + result);
         ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
         });
@@ -224,7 +232,7 @@ public class MerchantCardApi {
     public static void queryBankcardBalance(String uId, Integer userBankcardId) {
         QueryBankcardBalanceRequest request = new QueryBankcardBalanceRequest();
         request.setUserBankcardId(userBankcardId);
-        String result = postData(uId, MerchantCardMethods.QUERY_BANKCARD_BALANCE, request,null);
+        String result = postData(uId, MerchantCardMethods.QUERY_BANKCARD_BALANCE, request, null);
         System.out.println("queryBankcardBalance response String:  " + result);
         ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
         });
@@ -244,7 +252,7 @@ public class MerchantCardApi {
     public static void queryBankcardInfo(String uId, Integer userBankcardId) {
         QueryBankcardInfoRequest request = new QueryBankcardInfoRequest();
         request.setUserBankcardId(userBankcardId);
-        String result = postData(uId, MerchantCardMethods.QUERY_BANKCARD_INFO, request,null);
+        String result = postData(uId, MerchantCardMethods.QUERY_BANKCARD_INFO, request, null);
         System.out.println("queryBankcardInfo response String:  " + result);
         ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
         });
@@ -255,11 +263,11 @@ public class MerchantCardApi {
         }
     }
 
-    public static void queryBankcardOrder(String uId, Integer userBankcardId,String requestOrderId) {
+    public static void queryBankcardOrder(String uId, Integer userBankcardId, String requestOrderId) {
         QueryBankcardOrderRequest request = new QueryBankcardOrderRequest();
         request.setUserBankcardId(userBankcardId);
         request.setRequestOrderId(requestOrderId);
-        String result = postData(uId, MerchantCardMethods.CARD_ORDER, request,null);
+        String result = postData(uId, MerchantCardMethods.CARD_ORDER, request, null);
         System.out.println("queryBankcardOrder response String:  " + result);
         ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
         });
@@ -272,7 +280,7 @@ public class MerchantCardApi {
 
     public static void merchantAsset() {
         QueryMerchantAssetRequest request = new QueryMerchantAssetRequest();
-        String result = postData(null, MerchantCardMethods.MERCHANT_ASSET, request,null);
+        String result = postData(null, MerchantCardMethods.MERCHANT_ASSET, request, null);
         System.out.println("merchantAsset response String:  " + result);
         ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
         });
@@ -286,8 +294,10 @@ public class MerchantCardApi {
     public static void merchantHistoryLogs() {
         QueryMerchantHistoryLogsRequest request = new QueryMerchantHistoryLogsRequest();
         request.setPageSize(10);
+        request.setEndTimestamp(1730300532000L);
+        request.setFromTimestamp(1730299387000L);
         request.setPageNum(1);
-        String result = postData(null, MerchantCardMethods.MERCHANT_HISTORY_LOGS, request,null);
+        String result = postData(null, MerchantCardMethods.MERCHANT_HISTORY_LOGS, request, null);
         System.out.println("merchantHistoryLogs response String:  " + result);
         ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
         });
@@ -298,12 +308,27 @@ public class MerchantCardApi {
         }
     }
 
-    public static void ActiveBankcard(String uId,Integer templateId, String cardNo) {
+    public static void merchantRechargeRecords() {
+        QueryMerchantHistoryLogsRequest request = new QueryMerchantHistoryLogsRequest();
+        request.setPageSize(10);
+        request.setPageNum(1);
+        String result = postData(null, MerchantCardMethods.MERCHANT_RECHARGE_RECORDS, request, null);
+        System.out.println("merchantRechargeRecords response String:  " + result);
+        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
+        });
+        System.out.println("merchantRechargeRecords response Object:  " + apiResponse);
+        if (apiResponse.isSuccess()) {
+            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
+            System.out.println("merchantRechargeRecords encode result===>" + descStr);
+        }
+    }
+
+    public static void activeBankcard(String uId, Integer templateId, String cardNo) {
         BankcardActiveRequest request = new BankcardActiveRequest();
         request.setTemplateId(templateId);
-        request.setCardNo(cardNo);
+        request.setCardNumber(cardNo);
 
-        String result = postData(uId, MerchantCardMethods.ACTIVE_CARDS, request,null);
+        String result = postData(uId, MerchantCardMethods.ACTIVE_CARDS, request, null);
         System.out.println("ActiveBankcard response String:  " + result);
         ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
         });
@@ -314,12 +339,12 @@ public class MerchantCardApi {
         }
     }
 
-    public static void updateBankcardStatus(String uId, Integer userBankcardId,boolean enable) {
+    public static void updateBankcardStatus(String uId, Integer userBankcardId, boolean enable) {
         UpdateBankcardStatusRequest request = new UpdateBankcardStatusRequest();
         request.setEnable(enable);
         request.setUserBankcardId(userBankcardId);
 
-        String result = postData(uId, MerchantCardMethods.UPDATE_CARD_STATUS, request,null);
+        String result = postData(uId, MerchantCardMethods.UPDATE_CARD_STATUS, request, null);
         System.out.println("updateBankcardStatus response String:  " + result);
         ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
         });
@@ -334,7 +359,7 @@ public class MerchantCardApi {
         CloseBankcardRequest request = new CloseBankcardRequest();
         request.setUserBankcardId(userBankcardId);
 
-        String result = postData(uId, MerchantCardMethods.CLOSE_CARD, request,null);
+        String result = postData(uId, MerchantCardMethods.CLOSE_CARD, request, null);
         System.out.println("closeBankcard response String:  " + result);
         ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
         });
@@ -345,11 +370,11 @@ public class MerchantCardApi {
         }
     }
 
-    public static void  kycCheck(String uId) {
+    public static void kycCheck(String uId) {
         KycCheckRequest request = new KycCheckRequest();
         request.setIdType("PASSPORT");
         request.setCountry("CN");
-        String result = postData(uId, MerchantCardMethods.KYC_CHECK, request,null);
+        String result = postData(uId, MerchantCardMethods.KYC_CHECK, request, null);
         System.out.println("kycCheck response String:  " + result);
         ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
         });
@@ -360,9 +385,10 @@ public class MerchantCardApi {
         }
     }
 
-    public static void  kycStatus(String uId) {
-        APApiBaseRequest request = new APApiBaseRequest(){};
-        String result = postData(uId, MerchantCardMethods.KYC_STATUS, request,null);
+    public static void kycStatus(String uId) {
+        APApiBaseRequest request = new APApiBaseRequest() {
+        };
+        String result = postData(uId, MerchantCardMethods.KYC_STATUS, request, null);
         System.out.println("kycStatus response String:  " + result);
         ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
         });
@@ -373,10 +399,10 @@ public class MerchantCardApi {
         }
     }
 
-    public static void  query3dsAuth(String authId,String uId) {
+    public static void query3dsAuth(String authId, String uId) {
         Auth3dsRequest request = new Auth3dsRequest();
         request.setAuthId(authId);
-        String result = postData(uId, MerchantCardMethods.QUERY_3DSAUTH, request,null);
+        String result = postData(uId, MerchantCardMethods.QUERY_3DSAUTH, request, null);
         System.out.println("query3dsAuth response String:  " + result);
         ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
         });
@@ -386,10 +412,11 @@ public class MerchantCardApi {
             System.out.println("query3dsAuth encode result===>" + descStr);
         }
     }
-    public static void  approve3dsAuth(String authId,String uId) {
+
+    public static void approve3dsAuth(String authId, String uId) {
         Auth3dsRequest request = new Auth3dsRequest();
         request.setAuthId(authId);
-        String result = postData(uId, MerchantCardMethods.APPROVE_3DSAUTH, request,null);
+        String result = postData(uId, MerchantCardMethods.APPROVE_3DSAUTH, request, null);
         System.out.println("approve3dsAuth response String:  " + result);
         ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
         });
@@ -399,10 +426,11 @@ public class MerchantCardApi {
             System.out.println("approve3dsAuth encode result===>" + descStr);
         }
     }
-    public static void  reject3dsAuth(String authId,String uId) {
+
+    public static void reject3dsAuth(String authId, String uId) {
         Auth3dsRequest request = new Auth3dsRequest();
         request.setAuthId(authId);
-        String result = postData(uId, MerchantCardMethods.REJECT_3DSAUTH, request,null);
+        String result = postData(uId, MerchantCardMethods.REJECT_3DSAUTH, request, null);
         System.out.println("reject3dsAuth response String:  " + result);
         ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
         });
@@ -412,10 +440,11 @@ public class MerchantCardApi {
             System.out.println("reject3dsAuth encode result===>" + descStr);
         }
     }
-    public static void  getPin(Integer userBankcardId,String uId) {
+
+    public static void getPin(Integer userBankcardId, String uId) {
         GetPinRequest request = new GetPinRequest();
         request.setUserBankcardId(userBankcardId);
-        String result = postData(uId, MerchantCardMethods.GET_PIN, request,null);
+        String result = postData(uId, MerchantCardMethods.GET_PIN, request, null);
         System.out.println("getPin response String:  " + result);
         ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
         });
@@ -425,10 +454,11 @@ public class MerchantCardApi {
             System.out.println("getPin encode result===>" + descStr);
         }
     }
-    public static void  usdToEur(BigDecimal amount,String uId) {
+
+    public static void usdToEur(BigDecimal amount, String uId) {
         GetERURequest request = new GetERURequest();
         request.setAmount(amount);
-        String result = postData(uId, MerchantCardMethods.USD_TO_EUR, request,null);
+        String result = postData(uId, MerchantCardMethods.USD_TO_EUR, request, null);
         System.out.println("usdToEur response String:  " + result);
         ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
         });
@@ -441,13 +471,14 @@ public class MerchantCardApi {
 
     /**
      * payment gateway
+     *
      * @param uId
      * @param amount
      */
-    public static void  usdRecharge(String uId,BigDecimal amount) {
+    public static void usdRecharge(String uId, BigDecimal amount) {
         UserRechargeInfoRequest request = new UserRechargeInfoRequest();
         request.setAmount(amount);
-        String result = postData(uId, MerchantCardMethods.USD_RECHARGE, request,null);
+        String result = postData(uId, MerchantCardMethods.USD_RECHARGE, request, null);
         System.out.println("usdRecharge response String:  " + result);
         ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
         });
@@ -459,7 +490,7 @@ public class MerchantCardApi {
     }
 
     public static void main(String[] args) {
-//    userRegister("86","12328328","pintopay_test@asinx.io");
+//    userRegister("82","01sd0a673ddsdsd89038","azsdadsdijlijsdpark@naver.comcc");
 //      setUserInfo("30622");
 //       kycCheck("30622");
 //       kycStatus("31069");
@@ -469,27 +500,45 @@ public class MerchantCardApi {
 //        reject3dsAuth("CTX3DS1617206022504481","35920");
 //;
 //        usdToEur(BigDecimal.TEN,"35920");
-        usdRecharge("1",new BigDecimal(10));
+//        usdRecharge("1",new BigDecimal(10));
 //
 //        getSystemClock();
 //
 //        bankcardTemplateList();
-//        applyBankcard("36287",52,null,"KR");
+//        activeBankcard("59431",85,"5246042602003720");
+
+                    Integer integer = applyBankcard("37090", 14, null, null);
+
+
+
+//                    rechargeBankcard("36500", 2207, new BigDecimal(8), new BigDecimal(50));
+
+
+
 //
 //        Date start = new Date();
-//        rechargeBankcard("36287",19656,new BigDecimal(8),new BigDecimal(150));
+//        rechargeBankcard("36225",1315,new BigDecimal(8),new BigDecimal(50));
+//        rechargeBankcard("36214",695,new BigDecimal(8),new BigDecimal(50));
+//        rechargeBankcard("36214",696,new BigDecimal(8),new BigDecimal(50));
+//        rechargeBankcard("36214",697,new BigDecimal(8),new BigDecimal(50));
+//        rechargeBankcard("36214",698,new BigDecimal(8),new BigDecimal(50));
+
 //        Date end = new Date();
 //        System.out.println((end.getTime()-start.getTime()+ "ms"));
 //        merchantHistoryLogs();
-//        closeBankcard("1",20381);
-//        queryBankcardOrder("36046",19280,"CLOSE2406031639263553919");
-//        updateBankcardStatus("1",20362,true);
+//        closeBankcard("28854",20567);
+//                for (int i = 0; i < 1000; i++) {
+//        queryBankcardOrder("63058",26015,"CLOSE2411091449324559976");
+
+//        }
+//        updateBankcardStatus("55191",23631,true);
 //
 //
-//        queryBankcardTransactions("28886",20569);
-//        queryBankcardBalance("31370",20807);
-//        queryBankcardInfo("32246",19996);
+//        queryBankcardTransactions("59431",24533);
+//        queryBankcardBalance("15624",19380);
+//        queryBankcardInfo("39230",21567);
 //        merchantAsset();
+//        merchantRechargeRecords();
 //        merchantRechargeInfo();
     }
 
@@ -502,7 +551,7 @@ public class MerchantCardApi {
      * @param request
      * @return
      */
-    private static String postData(String uId, String method, APApiBaseRequest request,String requestOrderId) {
+    private static String postData(String uId, String method, APApiBaseRequest request, String requestOrderId) {
 
         String jsonDataString = JSON.toJSONString(request);
         String url = GATEWAY + method;
@@ -520,8 +569,8 @@ public class MerchantCardApi {
             httpRequest.header("uId", uId);
         }
 
-        if(!Strings.isNullOrEmpty(requestOrderId)){
-            httpRequest.header("requestOrderId",requestOrderId);
+        if (!Strings.isNullOrEmpty(requestOrderId)) {
+            httpRequest.header("requestOrderId", requestOrderId);
         }
         System.out.println("post all headers: " + httpRequest.headers());
 
@@ -536,4 +585,22 @@ public class MerchantCardApi {
                 .setConnectionTimeout(NOTIFY_CONNECT_TIMEOUT);
         return httpRequest.execute().body();
     }
+
+
+//    public static class ExecutorsDemo {
+//        private static ExecutorService executor = Executors.newFixedThreadPool(15);
+//        public static void main(String[] args) {
+//            for (int i = 0; i < 100; i++) {
+//                executor.execute(new SubThread());
+//            }
+//        }
+//    }
+//
+//    static class SubThread implements Runnable {
+//        @Override
+//        public void run() {
+//            Integer integer = applyBankcard("36250", 14, null, null);
+//            rechargeBankcard("36250", integer, new BigDecimal(8), new BigDecimal(50));
+//        }
+//    }
 }
