@@ -13,6 +13,7 @@ import com.merchantcard.utils.Base64ImgUtil;
 import com.merchantcard.utils.APEncryptUtil;
 import com.google.common.base.Strings;
 
+import java.io.File;
 import java.math.BigDecimal;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
@@ -494,6 +495,19 @@ public class MerchantCardApi {
     }
 
 
+    public static void ucardUploadFile(String uId) {
+        String result = postFormFile(uId, "uCardFile", "/Users/donnie/merchantcard-doc/merchant-card-java/src/main/resources/passport2.jpg", MerchantCardMethods.UCARD_UPLOAD_FILE);
+        System.out.println("ucardUploadFile response String:  " + result);
+        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
+        });
+        System.out.println("ucardUploadFile response Object:  " + apiResponse);
+        if (apiResponse.isSuccess()) {
+            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
+            System.out.println("ucardUploadFile encode result===>" + descStr);
+        }
+    }
+
+
     public static void setUCardHolderInfo(String uId) {
         UCardDeliveryAddress address = new UCardDeliveryAddress();
         UCardSetHolderInfoRequest request = new UCardSetHolderInfoRequest();
@@ -514,6 +528,7 @@ public class MerchantCardApi {
             System.out.println("setUCardHolderInfo encode result===>" + descStr);
         }
     }
+
     /**
      * assign card
      *
@@ -583,7 +598,8 @@ public class MerchantCardApi {
     }
 
     public static void main(String[] args) {
-        setUCardHolderInfo("37090");
+//        setUCardHolderInfo("37090");
+        ucardUploadFile("37090");
 //    userRegister("82","01sd0a673ddsdsd89038","azsdadsdijlijsdpark@naver.comcc");
 //      setUserInfo("30622");
 //       kycCheck("30622");
@@ -602,7 +618,6 @@ public class MerchantCardApi {
 //        activeBankcard("59431",85,"5246042602003720");
 
 //                    Integer integer = applyBankcard("37090", 14, null, null);
-
 
 
 //                    rechargeBankcard("36500", 2207, new BigDecimal(8), new BigDecimal(50));
@@ -682,6 +697,29 @@ public class MerchantCardApi {
         return httpRequest.execute().body();
     }
 
+    private static String postFormFile(String uId, String filedName, String filePath, String method) {
+
+        String url = GATEWAY + method;
+        System.out.println("url=" + url);
+        System.out.println("post form file path：" + method);
+        HttpRequest httpRequest = HttpRequest.post(url).form(filedName, new File(filePath)).header("appId", APP_ID);
+
+        if (!Strings.isNullOrEmpty(uId)) {
+            httpRequest.header("uId", uId);
+        }
+
+        System.out.println("post form file all headers: " + httpRequest.headers());
+
+        if (useProxy) {
+            Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(proxyAddress, proxyPort));
+            httpRequest.setProxy(proxy);
+        }
+
+        httpRequest.timeout(NOTIFY_TIMEOUT)
+                .charset(StandardCharsets.UTF_8)
+                .setConnectionTimeout(NOTIFY_CONNECT_TIMEOUT);
+        return httpRequest.execute().body();
+    }
 
 //    public static class ExecutorsDemo {
 //        private static ExecutorService executor = Executors.newFixedThreadPool(15);

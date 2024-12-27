@@ -75,4 +75,7 @@ public class MerchantCardMethods {
 
     public static String UCARD_ACTIVATE_CARD = "/UCard/active";
 
+    public static String UCARD_UPLOAD_FILE = "/upload/uCardFile";
+
+
 }
