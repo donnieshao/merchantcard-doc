@@ -493,6 +493,27 @@ public class MerchantCardApi {
         }
     }
 
+
+    public static void setUCardHolderInfo(String uId) {
+        UCardDeliveryAddress address = new UCardDeliveryAddress();
+        UCardSetHolderInfoRequest request = new UCardSetHolderInfoRequest();
+//        request.setDelivery_address(address);
+        request.setFirst_name("li");
+        request.setLast_name("li");
+        request.setCountry_code("CN");
+        request.setDate_of_birth("2010-10-10");
+        request.setPhone_number("13800138179");
+        request.setEmail("123lihjojoij@ab1c.com");
+        String result = postData(uId, MerchantCardMethods.UCARD_SET_HOLDER, request, null);
+        System.out.println("setUCardHolderInfo response String:  " + result);
+        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
+        });
+        System.out.println("setUCardHolderInfo response Object:  " + apiResponse);
+        if (apiResponse.isSuccess()) {
+            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
+            System.out.println("setUCardHolderInfo encode result===>" + descStr);
+        }
+    }
     /**
      * assign card
      *
@@ -503,7 +524,7 @@ public class MerchantCardApi {
         request.setCardNumber("64564646546545642941");
         request.setCardCurrency("USD");
 
-        String result = postData(uId, MerchantCardMethods.ASSIGN_CARD, request, null);
+        String result = postData(uId, MerchantCardMethods.UCARD_ASSIGN_CARD, request, null);
         System.out.println("assignCard response String:  " + result);
         ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
         });
@@ -524,7 +545,7 @@ public class MerchantCardApi {
         request.setActivationCode("123456");
         request.setUserBankcardId(19345);
 
-        String result = postData(uId, MerchantCardMethods.ACTIVATE_CARD, request, null);
+        String result = postData(uId, MerchantCardMethods.UCARD_ACTIVATE_CARD, request, null);
         System.out.println("activateCard response String:  " + result);
         ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
         });
@@ -550,7 +571,7 @@ public class MerchantCardApi {
         UCardHolderDeliveryAddressData build = UCardHolderDeliveryAddressData.builder().city("El Paso").postal_code("79936").country("US").line1("1994  Birch  Street").line2("abc").build();
         request.setDelivery_address(build);
 
-        String result = postData(uId, MerchantCardMethods.HOLDERS_SETINFO, request, null);
+        String result = postData(uId, MerchantCardMethods.UCARD_SET_HOLDER, request, null);
         System.out.println("holdersSetInfo response String:  " + result);
         ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
         });
@@ -562,6 +583,7 @@ public class MerchantCardApi {
     }
 
     public static void main(String[] args) {
+        setUCardHolderInfo("37090");
 //    userRegister("82","01sd0a673ddsdsd89038","azsdadsdijlijsdpark@naver.comcc");
 //      setUserInfo("30622");
 //       kycCheck("30622");
@@ -580,6 +602,7 @@ public class MerchantCardApi {
 //        activeBankcard("59431",85,"5246042602003720");
 
 //                    Integer integer = applyBankcard("37090", 14, null, null);
+
 
 
 //                    rechargeBankcard("36500", 2207, new BigDecimal(8), new BigDecimal(50));

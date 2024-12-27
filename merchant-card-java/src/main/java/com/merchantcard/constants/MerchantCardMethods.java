@@ -66,9 +66,13 @@ public class MerchantCardMethods {
 
     public static String USD_RECHARGE = "/user/usdRechargeInfo";
 
-    public static String ASSIGN_CARD = "/UCard/assign";
 
-    public static String ACTIVATE_CARD = "/UCard/active";
 
-    public static String HOLDERS_SETINFO = "/UCard/holders/setInfo";
+    /*************UCards***************/
+    public static String UCARD_SET_HOLDER = "/UCard/holders/setInfo";
+
+    public static String UCARD_ASSIGN_CARD = "/UCard/assign";
+
+    public static String UCARD_ACTIVATE_CARD = "/UCard/active";
+
 }
