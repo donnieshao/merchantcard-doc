@@ -65,4 +65,12 @@ public class MerchantCardMethods {
     public static String USD_TO_EUR = "/bankcard/getEURAmount";
 
     public static String USD_RECHARGE = "/user/usdRechargeInfo";
+
+
+
+    /*************UCards***************/
+    public static String UCARD_SET_HOLDER = "/UCard/holders/setInfo";
+
+
+
 }

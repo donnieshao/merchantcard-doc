@@ -489,7 +489,30 @@ public class MerchantCardApi {
         }
     }
 
+
+    public static void setUCardHolderInfo(String uId) {
+        UCardDeliveryAddress address = new UCardDeliveryAddress();
+        UCardSetHolderInfoRequest request = new UCardSetHolderInfoRequest();
+//        request.setDelivery_address(address);
+        request.setFirst_name("li");
+        request.setLast_name("li");
+        request.setCountry_code("CN");
+        request.setDate_of_birth("2010-10-10");
+        request.setPhone_number("13800138179");
+        request.setEmail("123lihjojoij@ab1c.com");
+        String result = postData(uId, MerchantCardMethods.UCARD_SET_HOLDER, request, null);
+        System.out.println("setUCardHolderInfo response String:  " + result);
+        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
+        });
+        System.out.println("setUCardHolderInfo response Object:  " + apiResponse);
+        if (apiResponse.isSuccess()) {
+            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
+            System.out.println("setUCardHolderInfo encode result===>" + descStr);
+        }
+    }
+
     public static void main(String[] args) {
+        setUCardHolderInfo("37090");
 //    userRegister("82","01sd0a673ddsdsd89038","azsdadsdijlijsdpark@naver.comcc");
 //      setUserInfo("30622");
 //       kycCheck("30622");
@@ -507,7 +530,7 @@ public class MerchantCardApi {
 //        bankcardTemplateList();
 //        activeBankcard("59431",85,"5246042602003720");
 
-                    Integer integer = applyBankcard("37090", 14, null, null);
+//                    Integer integer = applyBankcard("37090", 14, null, null);
 
 
 
