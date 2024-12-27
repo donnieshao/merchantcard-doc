@@ -71,6 +71,8 @@ public class MerchantCardMethods {
     /*************UCards***************/
     public static String UCARD_SET_HOLDER = "/UCard/holders/setInfo";
 
+    public static String UCARD_ASSIGN_CARD = "/UCard/assign";
 
+    public static String UCARD_ACTIVATE_CARD = "/UCard/active";
 
 }

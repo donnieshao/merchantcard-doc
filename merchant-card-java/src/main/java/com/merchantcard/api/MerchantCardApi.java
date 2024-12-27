@@ -25,8 +25,12 @@ public class MerchantCardApi {
 
     // test env gateway
     private static final String GATEWAY = "https://test.asinx.io/api-web";
+//    private static final String GATEWAY = "http://127.0.0.1:8848/api-web";
+
     // APPID
-    private static final String APP_ID = "app_36701";
+    private static final String APP_ID = "app_447770";
+//    private static final String APP_ID = "app_36701";
+
     // SECRET
     private static String APP_SECRET = "b635dd5c87f7bf73387929203321b1e1";
 
@@ -510,6 +514,74 @@ public class MerchantCardApi {
             System.out.println("setUCardHolderInfo encode result===>" + descStr);
         }
     }
+    /**
+     * assign card
+     *
+     * @param uId
+     */
+    public static void assignCard(String uId) {
+        AssignBankcardRequest request = new AssignBankcardRequest();
+        request.setCardholderId("e322645c-2759-4c3e-abd0-9bb33ae6b6b8");
+        request.setCardNumber("64564646546545642941");
+        request.setCardCurrency("USD");
+
+        String result = postData(uId, MerchantCardMethods.UCARD_ASSIGN_CARD, request, null);
+        System.out.println("assignCard response String:  " + result);
+        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
+        });
+        System.out.println("assignCard response Object:  " + apiResponse);
+        if (apiResponse.isSuccess()) {
+            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
+            System.out.println("assignCard encode result===>" + descStr);
+        }
+    }
+
+    /**
+     * activate card
+     *
+     * @param uId
+     */
+    public static void activateCard(String uId) {
+        ActivateBankcardRequest request = new ActivateBankcardRequest();
+        request.setActivationCode("123456");
+        request.setUserBankcardId(19345);
+
+        String result = postData(uId, MerchantCardMethods.UCARD_ACTIVATE_CARD, request, null);
+        System.out.println("activateCard response String:  " + result);
+        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
+        });
+        System.out.println("activateCard response Object:  " + apiResponse);
+        if (apiResponse.isSuccess()) {
+            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
+            System.out.println("activateCard encode result===>" + descStr);
+        }
+    }
+
+    /**
+     * holders set info
+     *
+     * @param uId
+     */
+    public static void holdersSetInfo(String uId) {
+        CardHolderRequest request = new CardHolderRequest();
+        request.setEmail("ckxkcbqnoo@iubridge.com");
+        request.setCountry_code("US");
+        request.setFirst_name("nana");
+        request.setLast_name("gong");
+        request.setPhone_number("9152538387");
+        UCardHolderDeliveryAddressData build = UCardHolderDeliveryAddressData.builder().city("El Paso").postal_code("79936").country("US").line1("1994  Birch  Street").line2("abc").build();
+        request.setDelivery_address(build);
+
+        String result = postData(uId, MerchantCardMethods.UCARD_SET_HOLDER, request, null);
+        System.out.println("holdersSetInfo response String:  " + result);
+        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
+        });
+        System.out.println("holdersSetInfo response Object:  " + apiResponse);
+        if (apiResponse.isSuccess()) {
+            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
+            System.out.println("holdersSetInfo encode result===>" + descStr);
+        }
+    }
 
     public static void main(String[] args) {
         setUCardHolderInfo("37090");
@@ -537,7 +609,6 @@ public class MerchantCardApi {
 //                    rechargeBankcard("36500", 2207, new BigDecimal(8), new BigDecimal(50));
 
 
-
 //
 //        Date start = new Date();
 //        rechargeBankcard("36225",1315,new BigDecimal(8),new BigDecimal(50));
@@ -563,6 +634,9 @@ public class MerchantCardApi {
 //        merchantAsset();
 //        merchantRechargeRecords();
 //        merchantRechargeInfo();
+//        assignCard("35920");
+//        activateCard("35920");
+//        holdersSetInfo("35920");
     }
 
     /**
