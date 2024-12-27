@@ -500,7 +500,6 @@ public class MerchantCardApi {
      */
     public static void assignCard(String uId) {
         AssignBankcardRequest request = new AssignBankcardRequest();
-        request.setCardholderId("e322645c-2759-4c3e-abd0-9bb33ae6b6b8");
         request.setCardNumber("64564646546545642941");
         request.setCardCurrency("USD");
 
