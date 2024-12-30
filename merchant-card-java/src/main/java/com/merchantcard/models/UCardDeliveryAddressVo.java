@@ -5,7 +5,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 @Data
-public class UCardDeliveryAddress implements Serializable {
+public class UCardDeliveryAddressVo implements Serializable {
     private String country;
     private String city;
     private String state;

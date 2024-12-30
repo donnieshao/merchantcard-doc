@@ -5,10 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6cd4c07-c249-4cbc-9bf0-557c770d69b1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/constants/IDTypes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/UCardHolderIdentificationVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/UCardHolderInfoVo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/merchantcard/api/MerchantCardApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/api/MerchantCardApi.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/merchantcard/constants/MerchantCardMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/constants/MerchantCardMethods.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/UserRechargeInfoRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/UserRechargeInfoRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/UCardDeliveryAddress.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/UCardDeliveryAddressVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/UCardSetHolderInfoRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/UCardSetHolderInfoRequest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +23,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -95,6 +100,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MerchantCardApi$ExecutorsDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.merchantcard.api.MerchantCardApi$ExecutorsDemo" />
+      <module name="merchant-card-java" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.merchantcard.api.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MerchantCardApi" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.merchantcard.api.MerchantCardApi" />
       <module name="merchant-card-java" />
@@ -129,15 +148,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -170,6 +187,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.MerchantCardApi" />
+        <item itemvalue="Application.MerchantCardApi$ExecutorsDemo" />
         <item itemvalue="Application.AesAPIUtils" />
         <item itemvalue="Application.NotifyProcessUtil" />
         <item itemvalue="Application.Base64ImgUtil" />
@@ -204,7 +222,42 @@
       <workItem from="1721457008942" duration="1243000" />
       <workItem from="1721629174411" duration="5912000" />
       <workItem from="1722009448753" duration="762000" />
-      <workItem from="1722396462778" duration="3932000" />
+      <workItem from="1722396462778" duration="8577000" />
+      <workItem from="1722995751639" duration="3728000" />
+      <workItem from="1723444544224" duration="3005000" />
+      <workItem from="1723711610005" duration="177000" />
+      <workItem from="1724058445982" duration="1912000" />
+      <workItem from="1724421394887" duration="1599000" />
+      <workItem from="1724725193109" duration="2395000" />
+      <workItem from="1724805938001" duration="59000" />
+      <workItem from="1724896193505" duration="1416000" />
+      <workItem from="1725008097788" duration="801000" />
+      <workItem from="1725351104125" duration="2720000" />
+      <workItem from="1725522196394" duration="924000" />
+      <workItem from="1726038423775" duration="730000" />
+      <workItem from="1726277177496" duration="3043000" />
+      <workItem from="1726567486734" duration="5941000" />
+      <workItem from="1727229340006" duration="620000" />
+      <workItem from="1727317808550" duration="7843000" />
+      <workItem from="1727571425284" duration="63000" />
+      <workItem from="1727595979720" duration="1467000" />
+      <workItem from="1728442259878" duration="24000" />
+      <workItem from="1729238590276" duration="15241000" />
+      <workItem from="1729862244853" duration="1280000" />
+      <workItem from="1729924655309" duration="331000" />
+      <workItem from="1730093182850" duration="25975000" />
+      <workItem from="1730443260380" duration="445000" />
+      <workItem from="1730445351786" duration="604000" />
+      <workItem from="1730789391391" duration="1246000" />
+      <workItem from="1730882656197" duration="979000" />
+      <workItem from="1731293080654" duration="1357000" />
+      <workItem from="1731491974204" duration="1233000" />
+      <workItem from="1731937279247" duration="2975000" />
+      <workItem from="1732674175021" duration="1376000" />
+      <workItem from="1732863944363" duration="2785000" />
+      <workItem from="1733469983711" duration="3618000" />
+      <workItem from="1735020647126" duration="1181000" />
+      <workItem from="1735195277387" duration="16830000" />
     </task>
     <servers />
   </component>
@@ -216,7 +269,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/merchantcard/api/MerchantCardApi.java</url>
-          <line>21</line>
+          <line>23</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

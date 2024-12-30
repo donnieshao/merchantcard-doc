@@ -4,12 +4,12 @@ import cn.hutool.http.HttpRequest;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
+import com.merchantcard.constants.IDTypes;
 import com.merchantcard.constants.MerchantCardMethods;
 import com.merchantcard.models.ApiResponse;
 import com.merchantcard.models.APApiBaseRequest;
 import com.merchantcard.models.*;
 import com.merchantcard.models.SystemClockRequest;
-import com.merchantcard.utils.Base64ImgUtil;
 import com.merchantcard.utils.APEncryptUtil;
 import com.google.common.base.Strings;
 
@@ -18,9 +18,6 @@ import java.math.BigDecimal;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.nio.charset.StandardCharsets;
-import java.util.Date;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class MerchantCardApi {
 
@@ -508,17 +505,28 @@ public class MerchantCardApi {
     }
 
 
-    public static void setUCardHolderInfo(String uId) {
-        UCardDeliveryAddress address = new UCardDeliveryAddress();
+    public static void uCardKYCApply(String uId) {
+        UCardDeliveryAddressVo address = new UCardDeliveryAddressVo();
+        UCardHolderInfoVo holderInfo = new UCardHolderInfoVo();
+        holderInfo.setFirst_name("uq");
+        holderInfo.setLast_name("li");
+        holderInfo.setCountry_code("CN");
+        holderInfo.setDate_of_birth("2010-09-10");
+        holderInfo.setPhone_number("18600797888");
+        holderInfo.setEmail("0001@qutest.com");
+        UCardHolderIdentificationVo identificationVo = new UCardHolderIdentificationVo();
+        identificationVo.setIdentificationType(IDTypes.PASSPORT);
+        identificationVo.setIdentificationNumber("12345678");
+        identificationVo.setIdentificationExpiryDate("2029-01-01");
+        identificationVo.setFrontImgFileId("front");
+        identificationVo.setBackImgFileId("back");
+        identificationVo.setHandheldImgFileId("hand");
         UCardSetHolderInfoRequest request = new UCardSetHolderInfoRequest();
-//        request.setDelivery_address(address);
-        request.setFirst_name("li");
-        request.setLast_name("li");
-        request.setCountry_code("CN");
-        request.setDate_of_birth("2010-10-10");
-        request.setPhone_number("13800138179");
-        request.setEmail("123lihjojoij@ab1c.com");
-        String result = postData(uId, MerchantCardMethods.UCARD_SET_HOLDER, request, null);
+        request.setHolderInfo(holderInfo);
+        request.setDeliveryAddress(address);
+        request.setIdentification(identificationVo);
+
+        String result = postData(uId, MerchantCardMethods.UCARD_KYC_APPLY, request, null);
         System.out.println("setUCardHolderInfo response String:  " + result);
         ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
         });
@@ -529,6 +537,20 @@ public class MerchantCardApi {
         }
     }
 
+    public static void uCardKycStatus(String uId) {
+        APApiBaseRequest request = new APApiBaseRequest() {
+        };
+        String result = postData(uId, MerchantCardMethods.UCARD_KYC_STATUS, request, null);
+        System.out.println("uCardkycStatus response String:  " + result);
+        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
+        });
+        System.out.println("uCardkycStatus response Object:  " + apiResponse);
+        if (apiResponse.isSuccess()) {
+            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
+            System.out.println("uCardkycStatus encode result===>" + descStr);
+        }
+    }
+
     /**
      * assign card
      *
@@ -536,7 +558,7 @@ public class MerchantCardApi {
      */
     public static void assignCard(String uId) {
         AssignBankcardRequest request = new AssignBankcardRequest();
-        request.setCardNumber("64564646546545642941");
+        request.setCardNumber("4937240112342740");
         request.setCardCurrency("USD");
 
         String result = postData(uId, MerchantCardMethods.UCARD_ASSIGN_CARD, request, null);
@@ -571,36 +593,13 @@ public class MerchantCardApi {
         }
     }
 
-    /**
-     * holders set info
-     *
-     * @param uId
-     */
-    public static void holdersSetInfo(String uId) {
-        CardHolderRequest request = new CardHolderRequest();
-        request.setEmail("ckxkcbqnoo@iubridge.com");
-        request.setCountry_code("US");
-        request.setFirst_name("nana");
-        request.setLast_name("gong");
-        request.setPhone_number("9152538387");
-        UCardHolderDeliveryAddressData build = UCardHolderDeliveryAddressData.builder().city("El Paso").postal_code("79936").country("US").line1("1994  Birch  Street").line2("abc").build();
-        request.setDelivery_address(build);
-
-        String result = postData(uId, MerchantCardMethods.UCARD_SET_HOLDER, request, null);
-        System.out.println("holdersSetInfo response String:  " + result);
-        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
-        });
-        System.out.println("holdersSetInfo response Object:  " + apiResponse);
-        if (apiResponse.isSuccess()) {
-            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
-            System.out.println("holdersSetInfo encode result===>" + descStr);
-        }
-    }
 
     public static void main(String[] args) {
-//        setUCardHolderInfo("37090");
-        ucardUploadFile("37090");
-//    userRegister("82","01sd0a673ddsdsd89038","azsdadsdijlijsdpark@naver.comcc");
+//        uCardKYCApply("37169");
+//        uCardKycStatus("37169");
+        assignCard("37169");
+//        ucardUploadFile("37090");
+//    userRegister("82","UQ_123456","test@uqph.com");
 //      setUserInfo("30622");
 //       kycCheck("30622");
 //       kycStatus("31069");

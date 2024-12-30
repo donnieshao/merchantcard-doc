@@ -69,7 +69,9 @@ public class MerchantCardMethods {
 
 
     /*************UCards***************/
-    public static String UCARD_SET_HOLDER = "/UCard/holders/setInfo";
+    public static String UCARD_KYC_APPLY = "/UCard/kyc/apply";
+
+    public static String UCARD_KYC_STATUS = "/UCard/kyc/status";
 
     public static String UCARD_ASSIGN_CARD = "/UCard/assign";
 
