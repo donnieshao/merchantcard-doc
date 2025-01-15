@@ -26,7 +26,7 @@ public class MerchantCardApi {
 //    private static final String GATEWAY = "http://127.0.0.1:8848/api-web";
 
     // APPID
-    private static final String APP_ID = "app_447770";
+    private static final String APP_ID = "app_37405";
 //    private static final String APP_ID = "app_36701";
 
     // SECRET
@@ -558,7 +558,7 @@ public class MerchantCardApi {
      */
     public static void assignCard(String uId) {
         AssignBankcardRequest request = new AssignBankcardRequest();
-        request.setCardNumber("4937240112342740");
+        request.setCardNumber("4096360800070687");
         request.setCardCurrency("USD");
 
         String result = postData(uId, MerchantCardMethods.UCARD_ASSIGN_CARD, request, null);
@@ -579,8 +579,8 @@ public class MerchantCardApi {
      */
     public static void activateCard(String uId) {
         ActivateBankcardRequest request = new ActivateBankcardRequest();
-        request.setActivationCode("123456");
-        request.setUserBankcardId(19345);
+        request.setActivationCode("91782384");
+        request.setCardId("d85626c1-b7a2-44bf-93a3-dc00a3133d44");
 
         String result = postData(uId, MerchantCardMethods.UCARD_ACTIVATE_CARD, request, null);
         System.out.println("activateCard response String:  " + result);
@@ -597,8 +597,9 @@ public class MerchantCardApi {
     public static void main(String[] args) {
 //        uCardKYCApply("37169");
 //        uCardKycStatus("37169");
-        assignCard("37169");
-//        ucardUploadFile("37090");
+//        assignCard("37169");
+//        activateCard("37169");
+        ucardUploadFile("37090");
 //    userRegister("82","UQ_123456","test@uqph.com");
 //      setUserInfo("30622");
 //       kycCheck("30622");
@@ -619,7 +620,7 @@ public class MerchantCardApi {
 //                    Integer integer = applyBankcard("37090", 14, null, null);
 
 
-//                    rechargeBankcard("36500", 2207, new BigDecimal(8), new BigDecimal(50));
+//                    rechargeBankcard("37169", 2956, new BigDecimal(8), new BigDecimal(50));
 
 
 //
@@ -643,11 +644,11 @@ public class MerchantCardApi {
 //
 //        queryBankcardTransactions("59431",24533);
 //        queryBankcardBalance("15624",19380);
-//        queryBankcardInfo("39230",21567);
+//        queryBankcardInfo("60023",24660);
 //        merchantAsset();
 //        merchantRechargeRecords();
 //        merchantRechargeInfo();
-//        assignCard("35920");
+//        assignCard("37169");
 //        activateCard("35920");
 //        holdersSetInfo("35920");
     }
