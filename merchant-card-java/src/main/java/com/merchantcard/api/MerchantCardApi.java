@@ -508,22 +508,22 @@ public class MerchantCardApi {
     public static void uCardKYCApply(String uId) {
         UCardDeliveryAddressVo address = new UCardDeliveryAddressVo();
         UCardHolderInfoVo holderInfo = new UCardHolderInfoVo();
-        holderInfo.setFirst_name("uq");
-        holderInfo.setLast_name("li");
+        holderInfo.setFirst_name("app");
+        holderInfo.setLast_name("share");
         holderInfo.setCountry_code("CN");
-        holderInfo.setDate_of_birth("2010-09-10");
-        holderInfo.setPhone_number("18600797888");
-        holderInfo.setEmail("0001@qutest.com");
+        holderInfo.setDate_of_birth("1987-11-04");
+        holderInfo.setPhone_number("18618190992");
+        holderInfo.setEmail("test_uq_share_api002@gmail.com");
         UCardHolderIdentificationVo identificationVo = new UCardHolderIdentificationVo();
         identificationVo.setIdentificationType(IDTypes.PASSPORT);
-        identificationVo.setIdentificationNumber("12345678");
+        identificationVo.setIdentificationNumber("123456178");
         identificationVo.setIdentificationExpiryDate("2029-01-01");
         identificationVo.setFrontImgFileId("front");
         identificationVo.setBackImgFileId("back");
         identificationVo.setHandheldImgFileId("hand");
         UCardSetHolderInfoRequest request = new UCardSetHolderInfoRequest();
         request.setHolderInfo(holderInfo);
-        request.setDeliveryAddress(address);
+//        request.setDeliveryAddress(address);
         request.setIdentification(identificationVo);
 
         String result = postData(uId, MerchantCardMethods.UCARD_KYC_APPLY, request, null);
@@ -556,12 +556,11 @@ public class MerchantCardApi {
      *
      * @param uId
      */
-    public static void assignCard(String uId) {
+    public static void assignCard(String cardNo) {
         AssignBankcardRequest request = new AssignBankcardRequest();
-        request.setCardNumber("4096360800070687");
-        request.setCardCurrency("USD");
-
-        String result = postData(uId, MerchantCardMethods.UCARD_ASSIGN_CARD, request, null);
+        request.setCardNumber(cardNo);
+        request.setBankcardId(112);
+        String result = postData("37635", MerchantCardMethods.UCARD_ASSIGN_CARD, request, null);
         System.out.println("assignCard response String:  " + result);
         ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
         });
@@ -574,13 +573,13 @@ public class MerchantCardApi {
 
     /**
      * activate card
-     *
+     * {"cardId":"2309a2f3-0956-407e-9f38-18173cb5042f","cardNo":"4096360800070521"}
      * @param uId
      */
     public static void activateCard(String uId) {
         ActivateBankcardRequest request = new ActivateBankcardRequest();
-        request.setActivationCode("91782384");
-        request.setCardId("d85626c1-b7a2-44bf-93a3-dc00a3133d44");
+        request.setActivationCode("75660168");
+        request.setUserBankcardId(3366);
 
         String result = postData(uId, MerchantCardMethods.UCARD_ACTIVATE_CARD, request, null);
         System.out.println("activateCard response String:  " + result);
@@ -595,12 +594,12 @@ public class MerchantCardApi {
 
 
     public static void main(String[] args) {
-//        uCardKYCApply("37169");
+//        uCardKYCApply("37635");
 //        uCardKycStatus("37169");
-//        assignCard("37169");
-//        activateCard("37169");
-        ucardUploadFile("37090");
-//    userRegister("82","UQ_123456","test@uqph.com");
+//        assignCard("4096360800070539");
+        activateCard("37635");
+//        ucardUploadFile("37090");
+//    userRegister("82","ohweolijlihoj","test_uq_share_api002@uqph.com");
 //      setUserInfo("30622");
 //       kycCheck("30622");
 //       kycStatus("31069");
@@ -643,8 +642,8 @@ public class MerchantCardApi {
 //
 //
 //        queryBankcardTransactions("59431",24533);
-//        queryBankcardBalance("15624",19380);
-//        queryBankcardInfo("60023",24660);
+//        queryBankcardBalance("37477",3275);
+//        queryBankcardInfo("37477",3275);
 //        merchantAsset();
 //        merchantRechargeRecords();
 //        merchantRechargeInfo();

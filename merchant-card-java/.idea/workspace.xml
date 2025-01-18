@@ -5,14 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6cd4c07-c249-4cbc-9bf0-557c770d69b1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/constants/IDTypes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/UCardHolderIdentificationVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/UCardHolderInfoVo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/merchantcard/api/MerchantCardApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/api/MerchantCardApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/merchantcard/constants/MerchantCardMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/constants/MerchantCardMethods.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/UCardDeliveryAddress.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/UCardDeliveryAddressVo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/UCardSetHolderInfoRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/UCardSetHolderInfoRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/ActivateBankcardRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/ActivateBankcardRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/AssignBankcardRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/AssignBankcardRequest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,13 +144,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -257,7 +255,10 @@
       <workItem from="1732863944363" duration="2785000" />
       <workItem from="1733469983711" duration="3618000" />
       <workItem from="1735020647126" duration="1181000" />
-      <workItem from="1735195277387" duration="16830000" />
+      <workItem from="1735195277387" duration="20940000" />
+      <workItem from="1735913586424" duration="660000" />
+      <workItem from="1736043657248" duration="3357000" />
+      <workItem from="1736500058273" duration="20096000" />
     </task>
     <servers />
   </component>

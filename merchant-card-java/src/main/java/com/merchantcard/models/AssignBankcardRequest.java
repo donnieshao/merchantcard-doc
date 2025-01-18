@@ -3,7 +3,8 @@ package com.merchantcard.models;
 import lombok.Data;
 
 @Data
-public class AssignBankcardRequest extends APApiBaseRequest{
+public class AssignBankcardRequest extends APApiBaseRequest {
     private String cardNumber;
-    private String cardCurrency;
+    private Integer bankcardId;
+    private boolean autoActive;
 }

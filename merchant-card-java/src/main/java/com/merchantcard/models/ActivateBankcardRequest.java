@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class ActivateBankcardRequest extends APApiBaseRequest {
-    private String cardId;
+    private Integer userBankcardId;
     private String activationCode;
 }
