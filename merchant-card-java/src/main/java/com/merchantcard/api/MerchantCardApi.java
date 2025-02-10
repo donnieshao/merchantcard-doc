@@ -39,7 +39,7 @@ public class MerchantCardApi {
     private static final int NOTIFY_CONNECT_TIMEOUT = 1000;
 
     // if use proxy ,set this value true
-    private static boolean useProxy = true;
+    private static boolean useProxy = false;
 
     // proxy ip
     private static String proxyAddress = "127.0.0.1";
