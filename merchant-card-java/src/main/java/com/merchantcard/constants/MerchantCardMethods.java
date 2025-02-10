@@ -80,4 +80,8 @@ public class MerchantCardMethods {
     public static String UCARD_UPLOAD_FILE = "/upload/uCardFile";
 
 
+    /**************Wholder***************/
+    public static String SETWHolderInfo = "/user/setWHolderInfo";
+
+
 }

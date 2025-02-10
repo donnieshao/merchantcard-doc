@@ -12,22 +12,23 @@ import com.merchantcard.models.*;
 import com.merchantcard.models.SystemClockRequest;
 import com.merchantcard.utils.APEncryptUtil;
 import com.google.common.base.Strings;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
 import java.math.BigDecimal;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.nio.charset.StandardCharsets;
+import java.util.UUID;
 
+@Slf4j
 public class MerchantCardApi {
 
     // test env gateway
     private static final String GATEWAY = "https://test.asinx.io/api-web";
-//    private static final String GATEWAY = "http://127.0.0.1:8848/api-web";
 
     // APPID
-    private static final String APP_ID = "app_37405";
-//    private static final String APP_ID = "app_36701";
+    private static final String APP_ID = "app_447770";
 
     // SECRET
     private static String APP_SECRET = "b635dd5c87f7bf73387929203321b1e1";
@@ -54,13 +55,13 @@ public class MerchantCardApi {
 
         SystemClockRequest request = new SystemClockRequest();
         String result = postData(null, MerchantCardMethods.SYS_CLOCK, request, null);
-        System.out.println("getSystemClock response String:  " + result);
+        log.info("getSystemClock response String:  " + result);
         ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
         });
-        System.out.println("getSystemClock response Object:  " + apiResponse);
+        log.info("getSystemClock response Object:  " + apiResponse);
         if (apiResponse.isSuccess()) {
             String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
-            System.out.println("getSystemClock encode===>" + descStr);
+            log.info("getSystemClock encode===>" + descStr);
         }
     }
 
@@ -115,35 +116,30 @@ public class MerchantCardApi {
         }
     }
 
-    public static void setUserInfo(String uId) {
-        SetUserInfoRequest request = new SetUserInfoRequest();
-        request.setFirstName("Li");
-        request.setLastName("Wan");
-        request.setFirstNameEnglish("Li");
-        request.setLastNameEnglish("Wan");
-        request.setNationality("CN");
-        request.setDateOfBirth("1997-02-04");
-        UserInfoAddressVo addressVo = new UserInfoAddressVo();
-        addressVo.setAddressLine1("No. 328, Changshou Road, Putuo District");
-        addressVo.setCity("shanghai");
-        addressVo.setPostCode("200050");
-        addressVo.setCountryCode("CN");
-        request.setAddress(addressVo);
-        IdentificationVo identificationVo = new IdentificationVo();
-        identificationVo.setIdentificationNumber("EK1783607");
-        identificationVo.setIdentificationType("PASSPORT");
-        identificationVo.setIdentificationExpiryDate("2030-03-22");
-        identificationVo.setVisaNumber("AB8605515");
-        identificationVo.setVisaExpiryDate("2028-05-19");
-        request.setIdentification(identificationVo);
-        String result = postData(uId, MerchantCardMethods.SET_USER_INFO, request, null);
-        System.out.println("setUserInfo response String:  " + result);
+    public static void setWHolderInfo(String uId) {
+        SetWHolderInfoRequest request = new SetWHolderInfoRequest();
+        request.setFirstName("donn");
+//        request.setMiddleName("1");
+        request.setLastName("shao");
+        request.setBirthDate("1990-01-01");
+        request.setMobilePrefix("86");
+        request.setMobile("18618190368");
+        request.setEmail("2644632417@qq.com");
+        request.setCountryCode("CHN");
+
+        request.setBillingState("beijing");
+        request.setBillingCity("beijing");
+        request.setBillingAddress("chaoyang qu,jianguo road,100");
+        request.setBillingZipCode("10010");
+
+        String result = postData(uId, MerchantCardMethods.SETWHolderInfo, request, null);
+        System.out.println("setWHolderInfo response String:  " + result);
         ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
         });
-        System.out.println("setUserInfo response Object:  " + apiResponse);
+        System.out.println("setWHolderInfo response Object:  " + apiResponse);
         if (apiResponse.isSuccess()) {
             String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
-            System.out.println("setUserInfo encode result===>" + descStr);
+            System.out.println("setWHolderInfo encode result===>" + descStr);
         }
     }
 
@@ -157,9 +153,7 @@ public class MerchantCardApi {
     public static Integer applyBankcard(String uId, Integer bankcardId, Integer userBankcardId, String residenceAddress) {
         ApplyBankcardRequest request = new ApplyBankcardRequest();
         request.setBankcardId(bankcardId);
-//        request.setUserBankcardId(userBankcardId);
         request.setResidenceAddress(residenceAddress);
-//        request.setTag("111111liwheefowhfoij");
         String result = postData(uId, MerchantCardMethods.APPLY_BANKCARD, request, null);
         System.out.println("applyBankcard response String:  " + result);
         ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
@@ -187,7 +181,7 @@ public class MerchantCardApi {
         request.setUserBankcardId(userBankcardId);
         request.setAmount(amount);
         request.setTargetAmount(targetAmount);
-        String result = postData(uId, MerchantCardMethods.RECHARGE_BANKCARD, request, null);
+        String result = postData(uId, MerchantCardMethods.RECHARGE_BANKCARD, request, UUID.randomUUID().toString());
         System.out.println("rechargeBankcard response String:  " + result);
         ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
         });
@@ -210,10 +204,10 @@ public class MerchantCardApi {
     public static void queryBankcardTransactions(String uId, Integer userBankcardId) {
         QueryBankcardTransactionsRequest request = new QueryBankcardTransactionsRequest();
         request.setUserBankcardId(userBankcardId);
-        request.setFromTimestamp(1729440000000L);
-        request.setEndTimestamp(1729871999000L);
-//        request.setPageSize(100);
-//        request.setPageNum(1);
+//        request.setFromTimestamp(1729440000000L);
+//        request.setEndTimestamp(1729871999000L);
+        request.setPageSize(100);
+        request.setPageNum(1);
         String result = postData(uId, MerchantCardMethods.QUERY_BANKCARD_TRANSACTIONS, request, null);
         System.out.println("queryBankcardTransactions response String:  " + result);
         ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
@@ -554,7 +548,7 @@ public class MerchantCardApi {
     /**
      * assign card
      *
-     * @param uId
+     * @param
      */
     public static void assignCard(String cardNo) {
         AssignBankcardRequest request = new AssignBankcardRequest();
@@ -590,66 +584,6 @@ public class MerchantCardApi {
             String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
             System.out.println("activateCard encode result===>" + descStr);
         }
-    }
-
-
-    public static void main(String[] args) {
-//        uCardKYCApply("37635");
-//        uCardKycStatus("37169");
-//        assignCard("4096360800070539");
-        activateCard("37635");
-//        ucardUploadFile("37090");
-//    userRegister("82","ohweolijlihoj","test_uq_share_api002@uqph.com");
-//      setUserInfo("30622");
-//       kycCheck("30622");
-//       kycStatus("31069");
-//5        getPin(19290,"35968")
-//        query3dsAuth("CTX3DS1617206022504481","35920");
-//        approve3dsAuth("CTX3DS1617206022504481","35920");
-//        reject3dsAuth("CTX3DS1617206022504481","35920");
-//;
-//        usdToEur(BigDecimal.TEN,"35920");
-//        usdRecharge("1",new BigDecimal(10));
-//
-//        getSystemClock();
-//
-//        bankcardTemplateList();
-//        activeBankcard("59431",85,"5246042602003720");
-
-//                    Integer integer = applyBankcard("37090", 14, null, null);
-
-
-//                    rechargeBankcard("37169", 2956, new BigDecimal(8), new BigDecimal(50));
-
-
-//
-//        Date start = new Date();
-//        rechargeBankcard("36225",1315,new BigDecimal(8),new BigDecimal(50));
-//        rechargeBankcard("36214",695,new BigDecimal(8),new BigDecimal(50));
-//        rechargeBankcard("36214",696,new BigDecimal(8),new BigDecimal(50));
-//        rechargeBankcard("36214",697,new BigDecimal(8),new BigDecimal(50));
-//        rechargeBankcard("36214",698,new BigDecimal(8),new BigDecimal(50));
-
-//        Date end = new Date();
-//        System.out.println((end.getTime()-start.getTime()+ "ms"));
-//        merchantHistoryLogs();
-//        closeBankcard("28854",20567);
-//                for (int i = 0; i < 1000; i++) {
-//        queryBankcardOrder("63058",26015,"CLOSE2411091449324559976");
-
-//        }
-//        updateBankcardStatus("55191",23631,true);
-//
-//
-//        queryBankcardTransactions("59431",24533);
-//        queryBankcardBalance("37477",3275);
-//        queryBankcardInfo("37477",3275);
-//        merchantAsset();
-//        merchantRechargeRecords();
-//        merchantRechargeInfo();
-//        assignCard("37169");
-//        activateCard("35920");
-//        holdersSetInfo("35920");
     }
 
     /**
@@ -719,21 +653,4 @@ public class MerchantCardApi {
                 .setConnectionTimeout(NOTIFY_CONNECT_TIMEOUT);
         return httpRequest.execute().body();
     }
-
-//    public static class ExecutorsDemo {
-//        private static ExecutorService executor = Executors.newFixedThreadPool(15);
-//        public static void main(String[] args) {
-//            for (int i = 0; i < 100; i++) {
-//                executor.execute(new SubThread());
-//            }
-//        }
-//    }
-//
-//    static class SubThread implements Runnable {
-//        @Override
-//        public void run() {
-//            Integer integer = applyBankcard("36250", 14, null, null);
-//            rechargeBankcard("36250", integer, new BigDecimal(8), new BigDecimal(50));
-//        }
-//    }
 }
