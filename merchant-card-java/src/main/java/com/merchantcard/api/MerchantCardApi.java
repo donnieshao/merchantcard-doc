@@ -28,10 +28,10 @@ public class MerchantCardApi {
     private static final String GATEWAY = "https://test.asinx.io/api-web";
 
     // APPID
-    private static final String APP_ID = "app_447770";
+    private static final String APP_ID = "";
 
     // SECRET
-    private static String APP_SECRET = "b635dd5c87f7bf73387929203321b1e1";
+    private static String APP_SECRET = "";
 
 
     private static final int NOTIFY_TIMEOUT = 15000;
@@ -39,13 +39,13 @@ public class MerchantCardApi {
     private static final int NOTIFY_CONNECT_TIMEOUT = 1000;
 
     // if use proxy ,set this value true
-    private static boolean useProxy = false;
+    private static boolean useProxy = true;
 
     // proxy ip
     private static String proxyAddress = "127.0.0.1";
 
     // proxy port
-    private static int proxyPort = 7890;
+    private static int proxyPort = 7070;
 
 
     /**
@@ -118,13 +118,13 @@ public class MerchantCardApi {
 
     public static void setWHolderInfo(String uId) {
         SetWHolderInfoRequest request = new SetWHolderInfoRequest();
-        request.setFirstName("donn");
+        request.setFirstName("dongdong");
 //        request.setMiddleName("1");
         request.setLastName("shao");
         request.setBirthDate("1990-01-01");
         request.setMobilePrefix("86");
-        request.setMobile("18618190368");
-        request.setEmail("2644632417@qq.com");
+        request.setMobile("13561790246");
+        request.setEmail("2644632411@qq.com");
         request.setCountryCode("CHN");
 
         request.setBillingState("beijing");
@@ -502,21 +502,23 @@ public class MerchantCardApi {
     public static void uCardKYCApply(String uId) {
         UCardDeliveryAddressVo address = new UCardDeliveryAddressVo();
         UCardHolderInfoVo holderInfo = new UCardHolderInfoVo();
-        holderInfo.setFirst_name("app");
-        holderInfo.setLast_name("share");
+        holderInfo.setFirst_name("apppaha");
+        holderInfo.setLast_name("sharessaa");
         holderInfo.setCountry_code("CN");
-        holderInfo.setDate_of_birth("1987-11-04");
-        holderInfo.setPhone_number("18618190992");
-        holderInfo.setEmail("test_uq_share_api002@gmail.com");
+        holderInfo.setDate_of_birth("1987-11-01");
+        holderInfo.setPhone_number("18318191661");
+        holderInfo.setEmail("test_uq_group_force_recharge@gmail.com");
         UCardHolderIdentificationVo identificationVo = new UCardHolderIdentificationVo();
         identificationVo.setIdentificationType(IDTypes.PASSPORT);
-        identificationVo.setIdentificationNumber("123456178");
+        identificationVo.setIdentificationNumber("1234561789");
         identificationVo.setIdentificationExpiryDate("2029-01-01");
-        identificationVo.setFrontImgFileId("front");
-        identificationVo.setBackImgFileId("back");
-        identificationVo.setHandheldImgFileId("hand");
+        String demoImg = "3e3d0798-e9c6-49c9-bdb9-612e29b56d2d";
+        identificationVo.setFrontImgFileId(demoImg);
+        identificationVo.setBackImgFileId(demoImg);
+        identificationVo.setHandheldImgFileId(demoImg);
         UCardSetHolderInfoRequest request = new UCardSetHolderInfoRequest();
         request.setHolderInfo(holderInfo);
+//        request.setAttemptBankcardId(121);
 //        request.setDeliveryAddress(address);
         request.setIdentification(identificationVo);
 
@@ -550,11 +552,12 @@ public class MerchantCardApi {
      *
      * @param
      */
-    public static void assignCard(String cardNo) {
+    public static void assignCard(String uId,String cardNo) {
         AssignBankcardRequest request = new AssignBankcardRequest();
         request.setCardNumber(cardNo);
-        request.setBankcardId(112);
-        String result = postData("37635", MerchantCardMethods.UCARD_ASSIGN_CARD, request, null);
+        request.setBankcardId(142);
+        request.setAutoActive(true);
+        String result = postData(uId, MerchantCardMethods.UCARD_ASSIGN_CARD, request, null);
         System.out.println("assignCard response String:  " + result);
         ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
         });

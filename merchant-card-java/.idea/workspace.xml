@@ -5,13 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6cd4c07-c249-4cbc-9bf0-557c770d69b1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/SetWHolderInfoRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/logback.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/MerchantCardAPITest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/merchantcard/api/MerchantCardApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/api/MerchantCardApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/merchantcard/constants/MerchantCardMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/constants/MerchantCardMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/UCardSetHolderInfoRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/UCardSetHolderInfoRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/MerchantCardAPITest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MerchantCardAPITest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +61,7 @@
       <recent name="com.merchantcard.models" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.MerchantCardAPITest.queryBankcardTransactions">
+  <component name="RunManager" selected="JUnit.MerchantCardAPITest.testRecharge">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="WIDTH" value="400" />
       <option name="HEIGHT" value="300" />
@@ -78,54 +75,66 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MerchantCardAPITest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="merchant-card-java" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="MerchantCardAPITest" />
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
       <option name="TEST_OBJECT" value="class" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MerchantCardAPITest.queryBankcardTransactions" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MerchantCardAPITest.testApply" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="merchant-card-java" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="MerchantCardAPITest" />
-      <option name="METHOD_NAME" value="queryBankcardTransactions" />
+      <option name="METHOD_NAME" value="testApply" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MerchantCardAPITest.register" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MerchantCardAPITest.testAssignCard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="merchant-card-java" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="MerchantCardAPITest" />
-      <option name="METHOD_NAME" value="register" />
+      <option name="METHOD_NAME" value="testAssignCard" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MerchantCardAPITest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MerchantCardAPITest.testRecharge" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="merchant-card-java" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="MerchantCardAPITest" />
-      <option name="METHOD_NAME" value="test" />
+      <option name="METHOD_NAME" value="testRecharge" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MerchantCardAPITest.testGetSystemClock" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MerchantCardAPITest.testUploadFile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="merchant-card-java" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="MerchantCardAPITest" />
-      <option name="METHOD_NAME" value="testGetSystemClock" />
+      <option name="METHOD_NAME" value="testUploadFile" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MerchantCardAPITest.testuCardKYCApply" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="merchant-card-java" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MerchantCardAPITest" />
+      <option name="METHOD_NAME" value="testuCardKYCApply" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
@@ -159,11 +168,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.MerchantCardAPITest.queryBankcardTransactions" />
-        <item itemvalue="JUnit.MerchantCardAPITest" />
-        <item itemvalue="JUnit.MerchantCardAPITest.testGetSystemClock" />
-        <item itemvalue="JUnit.MerchantCardAPITest.register" />
-        <item itemvalue="JUnit.MerchantCardAPITest.test" />
+        <item itemvalue="JUnit.MerchantCardAPITest.testRecharge" />
+        <item itemvalue="JUnit.MerchantCardAPITest.testAssignCard" />
+        <item itemvalue="JUnit.MerchantCardAPITest.testuCardKYCApply" />
+        <item itemvalue="JUnit.MerchantCardAPITest.testUploadFile" />
+        <item itemvalue="JUnit.MerchantCardAPITest.testApply" />
       </list>
     </recent_temporary>
   </component>
@@ -243,6 +252,18 @@
       <workItem from="1738920621697" duration="648000" />
       <workItem from="1738938837982" duration="3964000" />
       <workItem from="1739001347873" duration="1430000" />
+      <workItem from="1739180308307" duration="373000" />
+      <workItem from="1739181342803" duration="267000" />
+      <workItem from="1739196677156" duration="488000" />
+      <workItem from="1739523521937" duration="2201000" />
+      <workItem from="1739527255780" duration="794000" />
+      <workItem from="1739887640629" duration="1109000" />
+      <workItem from="1739936953320" duration="6033000" />
+      <workItem from="1740405131038" duration="1430000" />
+      <workItem from="1740534948683" duration="590000" />
+      <workItem from="1740577820736" duration="8733000" />
+      <workItem from="1741076632471" duration="11880000" />
+      <workItem from="1741512978724" duration="12270000" />
     </task>
     <servers />
   </component>
@@ -256,6 +277,12 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/merchantcard/api/MerchantCardApi.java</url>
           <line>26</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/src/main/java/com/merchantcard/api/MerchantCardApi.java</url>
+          <line>44</line>
+          <properties field="proxyAddress" class="com.merchantcard.api.MerchantCardApi" />
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -10,4 +10,6 @@ public class UCardSetHolderInfoRequest extends APApiBaseRequest{
     private UCardDeliveryAddressVo deliveryAddress;
 
     private UCardHolderIdentificationVo identification;
+
+    private Integer attemptBankcardId;
 }

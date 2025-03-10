@@ -4,6 +4,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
+
 /***
  *
  *
@@ -103,14 +105,68 @@ public class MerchantCardAPITest {
 
     @Test
     public void register() {
-        MerchantCardApi.userRegister("82","198811201","4661test@tester.com");
+        // 37910
+        MerchantCardApi.userRegister("852","1890090123","test_uq123@tester.com");
     }
+
+    @Test
+    public void testSetWHolderInfo() {
+        MerchantCardApi.setWHolderInfo("81795");
+    }
+
+    @Test
+    public void testBankcardTemplateList() {
+        MerchantCardApi.bankcardTemplateList();
+    }
+
+    @Test
+    public void testApply() {
+        MerchantCardApi.applyBankcard("38059", 143, null, null);
+    }
+
+    @Test
+    public void testRecharge(){
+        //37525
+        MerchantCardApi.rechargeBankcard("37731", 4019, new BigDecimal(8), new BigDecimal(200));
+    }
+
+    @Test
+    public void testQueryBankcardBalance() {
+        MerchantCardApi.queryBankcardBalance("81795", 33293);
+    }
+
     @Test
     public void queryBankcardTransactions() {
-        MerchantCardApi.queryBankcardTransactions("68308",27667);
+        MerchantCardApi.queryBankcardTransactions("37525",3734);
     }
 
+    @Test
+    public void testUploadFile() {
+        MerchantCardApi.ucardUploadFile("37731");//067c5f62-9b28-4854-8062-c990f11e98b9
+    }
 
+    @Test
+    public void testuCardKYCApply(){
+        MerchantCardApi.uCardKYCApply("37731");
+    }
 
+    @Test
+    public void testAssignCard() {
+        MerchantCardApi.assignCard("37731","4096360800079530");
+    }
 
+    @Test
+    public void testWholderInfo() {
+        MerchantCardApi.setWHolderInfo("37984");
+    }
+
+    @Test
+    public void testKycapply() {
+        MerchantCardApi.uCardKYCApply("37731");
+    }
+
+    @Test
+    public void testOrderQuery() {
+        MerchantCardApi.queryBankcardOrder("38017", 3963, "d195386c-7510-46a7-a9ef-eb989be01835-0");
+    }
 }
