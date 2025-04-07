@@ -121,23 +121,23 @@ public class MerchantCardAPITest {
 
     @Test
     public void testApply() {
-        MerchantCardApi.applyBankcard("38059", 143, null, null);
+        MerchantCardApi.applyBankcard("37731", 146, null, null);
     }
 
     @Test
     public void testRecharge(){
         //37525
-        MerchantCardApi.rechargeBankcard("37731", 4019, new BigDecimal(8), new BigDecimal(200));
+        MerchantCardApi.rechargeBankcard("37731", 4365, new BigDecimal(8), new BigDecimal(200));
     }
 
     @Test
     public void testQueryBankcardBalance() {
-        MerchantCardApi.queryBankcardBalance("81795", 33293);
+        MerchantCardApi.queryBankcardBalance("37731", 4365);
     }
 
     @Test
     public void queryBankcardTransactions() {
-        MerchantCardApi.queryBankcardTransactions("37525",3734);
+        MerchantCardApi.queryBankcardTransactions("37731",4365);
     }
 
     @Test
