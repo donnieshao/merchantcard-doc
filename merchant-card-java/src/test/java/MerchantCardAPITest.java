@@ -169,4 +169,10 @@ public class MerchantCardAPITest {
     public void testOrderQuery() {
         MerchantCardApi.queryBankcardOrder("38017", 3963, "d195386c-7510-46a7-a9ef-eb989be01835-0");
     }
+
+    @Test
+    public void testUpdateCardStatus() {
+        MerchantCardApi.updateBankcardStatus("37731",4365,true);
+    }
+
 }
