@@ -171,8 +171,16 @@ public class MerchantCardAPITest {
     }
 
     @Test
-    public void testUpdateCardStatus() {
-        MerchantCardApi.updateBankcardStatus("37731",4365,true);
+    public void testListRegion() {
+        MerchantCardApi.wsListRegion("37731");
+    }
+    @Test
+    public void testWsListCity() {
+        MerchantCardApi.wsListCity("37731");
+    }
+    @Test
+    public void testWsListMobileArea() {
+        MerchantCardApi.wsListMobileArea("37731");
     }
 
 }
