@@ -84,4 +84,11 @@ public class MerchantCardMethods {
     public static String SETWHolderInfo = "/user/setWHolderInfo";
 
 
+    /**************WS***************/
+    public static String CREATE_WS_CARDHOLDER = "/WSCard/holder/apply";
+
+    public static String UPDATE_WS_CARDHOLDER = "/WSCard/holder/update";
+
+    public static String QUERY_WS_CARDHOLDER = "/WSCard/holder/query";
+
 }

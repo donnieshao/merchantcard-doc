@@ -8,4 +8,5 @@ public class ApplyBankcardRequest extends APApiBaseRequest {
     private String residenceAddress;
     private Integer userBankcardId;
     private String tag;
+    private String holderRefId;
 }

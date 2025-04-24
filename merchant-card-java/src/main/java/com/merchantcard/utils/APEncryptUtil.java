@@ -37,4 +37,10 @@ public class APEncryptUtil {
         String base64String = AesAPIUtils.decode(content, secret);
         return base64String;
     }
+
+
+    public static void main(String[] args) {
+        String decode = decode("b635dd5c87f7bf73387929203321b1e1", "d4765efa8fbc6b21dcee653013f82ef0fc5f52f7d0f56ff7a97221cd9bd8b067c51cba5ca49e1c8cb690c60ce3df24b5228b2f65a7362213eceae4ed6338c6758a7bbf2f20f4a8f0e8bfc1801772b7f2a43bff9476ed376390d2b600184c51c2");
+        System.out.println(decode);
+    }
 }

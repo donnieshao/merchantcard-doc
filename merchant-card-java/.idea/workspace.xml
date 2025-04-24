@@ -5,9 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6cd4c07-c249-4cbc-9bf0-557c770d69b1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/ws/WsCardHolderRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/utils/CheckUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/MerchantAPITest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/UCardAPITest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/merchantcard/api/MerchantCardApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/api/MerchantCardApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/UCardSetHolderInfoRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/UCardSetHolderInfoRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/merchantcard/constants/MerchantCardMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/constants/MerchantCardMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/ApplyBankcardRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/ApplyBankcardRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/merchantcard/utils/APEncryptUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/utils/APEncryptUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/MerchantCardAPITest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MerchantCardAPITest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,7 +56,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="http.proxy" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -58,6 +65,8 @@
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.merchantcard.utils" />
+      <recent name="com.merchantcard.models.wsb" />
       <recent name="com.merchantcard.models" />
     </key>
   </component>
@@ -69,19 +78,46 @@
       <module />
       <method />
     </configuration>
+    <configuration name="APEncryptUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.merchantcard.utils.APEncryptUtil" />
+      <module name="merchant-card-java" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.merchantcard.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MerchantCardAPITest.register" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="merchant-card-java" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MerchantCardAPITest" />
+      <option name="METHOD_NAME" value="register" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -91,17 +127,6 @@
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="MerchantCardAPITest" />
       <option name="METHOD_NAME" value="testApply" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MerchantCardAPITest.testAssignCard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="merchant-card-java" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="MerchantCardAPITest" />
-      <option name="METHOD_NAME" value="testAssignCard" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
@@ -119,22 +144,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MerchantCardAPITest.testUploadFile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MerchantCardAPITest.testWsHolder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="merchant-card-java" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="MerchantCardAPITest" />
-      <option name="METHOD_NAME" value="testUploadFile" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MerchantCardAPITest.testuCardKYCApply" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="merchant-card-java" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="MerchantCardAPITest" />
-      <option name="METHOD_NAME" value="testuCardKYCApply" />
+      <option name="METHOD_NAME" value="testWsHolder" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
@@ -169,10 +183,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.MerchantCardAPITest.testRecharge" />
-        <item itemvalue="JUnit.MerchantCardAPITest.testAssignCard" />
-        <item itemvalue="JUnit.MerchantCardAPITest.testuCardKYCApply" />
-        <item itemvalue="JUnit.MerchantCardAPITest.testUploadFile" />
         <item itemvalue="JUnit.MerchantCardAPITest.testApply" />
+        <item itemvalue="JUnit.MerchantCardAPITest.testWsHolder" />
+        <item itemvalue="JUnit.MerchantCardAPITest.register" />
+        <item itemvalue="Application.APEncryptUtil" />
       </list>
     </recent_temporary>
   </component>
@@ -263,7 +277,21 @@
       <workItem from="1740534948683" duration="590000" />
       <workItem from="1740577820736" duration="8733000" />
       <workItem from="1741076632471" duration="11880000" />
-      <workItem from="1741512978724" duration="12270000" />
+      <workItem from="1741512978724" duration="16877000" />
+      <workItem from="1742263790628" duration="2015000" />
+      <workItem from="1742291391819" duration="508000" />
+      <workItem from="1742293930995" duration="1846000" />
+      <workItem from="1742459716533" duration="1329000" />
+      <workItem from="1742627867405" duration="673000" />
+      <workItem from="1744036323394" duration="763000" />
+      <workItem from="1744620210911" duration="10118000" />
+      <workItem from="1744711113669" duration="6000" />
+      <workItem from="1744796241540" duration="941000" />
+      <workItem from="1744815357331" duration="15705000" />
+      <workItem from="1744969647954" duration="4117000" />
+      <workItem from="1745243942725" duration="4179000" />
+      <workItem from="1745289966309" duration="5736000" />
+      <workItem from="1745418861504" duration="4916000" />
     </task>
     <servers />
   </component>
@@ -275,12 +303,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/merchantcard/api/MerchantCardApi.java</url>
-          <line>26</line>
+          <line>27</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/src/main/java/com/merchantcard/api/MerchantCardApi.java</url>
-          <line>44</line>
+          <line>45</line>
           <properties field="proxyAddress" class="com.merchantcard.api.MerchantCardApi" />
           <option name="timeStamp" value="2" />
         </line-breakpoint>

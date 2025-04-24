@@ -1,10 +1,12 @@
 import com.merchantcard.api.MerchantCardApi;
+import com.merchantcard.models.ws.WsCardHolderRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 /***
  *
@@ -106,7 +108,7 @@ public class MerchantCardAPITest {
     @Test
     public void register() {
         // 37910
-        MerchantCardApi.userRegister("852","1890090123","test_uq123@tester.com");
+        MerchantCardApi.userRegister("+49","15150819731","dennisposchner@outlook.com");
     }
 
     @Test
@@ -121,13 +123,13 @@ public class MerchantCardAPITest {
 
     @Test
     public void testApply() {
-        MerchantCardApi.applyBankcard("38059", 143, null, null);
+        MerchantCardApi.applyBankcard("90166", 180, null, null);
     }
 
     @Test
     public void testRecharge(){
         //37525
-        MerchantCardApi.rechargeBankcard("37731", 4019, new BigDecimal(8), new BigDecimal(200));
+        MerchantCardApi.rechargeBankcard("90166", 39391, new BigDecimal(8), new BigDecimal(21), UUID.randomUUID().toString());
     }
 
     @Test
@@ -142,17 +144,17 @@ public class MerchantCardAPITest {
 
     @Test
     public void testUploadFile() {
-        MerchantCardApi.ucardUploadFile("37731");//067c5f62-9b28-4854-8062-c990f11e98b9
+        MerchantCardApi.ucardUploadFile("38071");//067c5f62-9b28-4854-8062-c990f11e98b9
     }
 
     @Test
     public void testuCardKYCApply(){
-        MerchantCardApi.uCardKYCApply("37731");
+        MerchantCardApi.uCardKYCApply("38173");
     }
 
     @Test
     public void testAssignCard() {
-        MerchantCardApi.assignCard("37731","4096360800079530");
+        MerchantCardApi.assignCard("38071","4096360800079258",true);
     }
 
     @Test
@@ -168,5 +170,73 @@ public class MerchantCardAPITest {
     @Test
     public void testOrderQuery() {
         MerchantCardApi.queryBankcardOrder("38017", 3963, "d195386c-7510-46a7-a9ef-eb989be01835-0");
+    }
+
+    @Test
+    public void testCardInfo(){
+        MerchantCardApi.queryBankcardInfo("38134",4121);
+    }
+
+    @Test
+    public void testMerchantRechargeInfo(){
+        MerchantCardApi.merchantRechargeInfo();
+    }
+
+    @Test
+    public void testMerchantHistoryLog(){
+        MerchantCardApi.merchantHistoryLogs();
+    }
+
+    @Test
+    public void testRechargeRecords(){
+        MerchantCardApi.merchantRechargeRecords();
+
+    }
+
+    @Test
+    public void testStatus(){
+        MerchantCardApi.updateBankcardStatus("38568",4426,false);
+    }
+
+
+    @Test
+    public void testWsHolder(){
+        WsCardHolderRequest request = new WsCardHolderRequest();
+        request.setBankcardId(180)
+                .setAreaCode("+49")
+                .setMobile("15150819731")
+                .setEmail("dennisposchner@outlook.com")
+                .setFirstName("john")
+                .setLastName("zhang")
+                .setBirthday("1999-11-19")
+                .setCountry("US")
+                .setTown("US_QEE")
+                .setAddress("1861  Henry Ford Avenue")
+                .setPostCode("10007");
+        MerchantCardApi.createWSHolder("90166",request);
+    }
+
+    @Test
+    public void testUpdateWsHolder(){
+        WsCardHolderRequest request = new WsCardHolderRequest();
+        request.setHolderId(28442L)
+                .setAreaCode("+1")
+                .setMobile("9178595315")
+                .setEmail("wulixroszn@gmail.com")
+                .setFirstName("Mu")
+                .setLastName("ha")
+                .setBirthday("1983-11-19")
+                .setCountry("US")
+                .setTown("US_QEE")
+                .setAddress("1149  Williams Avenue")
+                .setPostCode("10001");
+        MerchantCardApi.updateWSHolder("83501",request);
+    }
+
+    @Test
+    public void testQueryWsHolder(){
+        WsCardHolderRequest request = new WsCardHolderRequest();
+        request.setHolderId(58052L);
+        MerchantCardApi.queryWSHolder("38156",request);
     }
 }

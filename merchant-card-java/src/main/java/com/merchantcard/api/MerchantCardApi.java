@@ -10,6 +10,7 @@ import com.merchantcard.models.ApiResponse;
 import com.merchantcard.models.APApiBaseRequest;
 import com.merchantcard.models.*;
 import com.merchantcard.models.SystemClockRequest;
+import com.merchantcard.models.ws.WsCardHolderRequest;
 import com.merchantcard.utils.APEncryptUtil;
 import com.google.common.base.Strings;
 import lombok.extern.slf4j.Slf4j;
@@ -19,7 +20,6 @@ import java.math.BigDecimal;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.nio.charset.StandardCharsets;
-import java.util.UUID;
 
 @Slf4j
 public class MerchantCardApi {
@@ -39,7 +39,7 @@ public class MerchantCardApi {
     private static final int NOTIFY_CONNECT_TIMEOUT = 1000;
 
     // if use proxy ,set this value true
-    private static boolean useProxy = true;
+    private static boolean useProxy = false;
 
     // proxy ip
     private static String proxyAddress = "127.0.0.1";
@@ -154,6 +154,7 @@ public class MerchantCardApi {
         ApplyBankcardRequest request = new ApplyBankcardRequest();
         request.setBankcardId(bankcardId);
         request.setResidenceAddress(residenceAddress);
+        request.setHolderRefId("28774");
         String result = postData(uId, MerchantCardMethods.APPLY_BANKCARD, request, null);
         System.out.println("applyBankcard response String:  " + result);
         ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
@@ -176,12 +177,12 @@ public class MerchantCardApi {
      * @param userBankcardId
      * @param amount
      */
-    public static void rechargeBankcard(String uId, Integer userBankcardId, BigDecimal amount, BigDecimal targetAmount) {
+    public static void rechargeBankcard(String uId, Integer userBankcardId, BigDecimal amount, BigDecimal targetAmount,String requestOrderId) {
         RechargeBankcardRequest request = new RechargeBankcardRequest();
         request.setUserBankcardId(userBankcardId);
         request.setAmount(amount);
         request.setTargetAmount(targetAmount);
-        String result = postData(uId, MerchantCardMethods.RECHARGE_BANKCARD, request, UUID.randomUUID().toString());
+        String result = postData(uId, MerchantCardMethods.RECHARGE_BANKCARD, request, requestOrderId);
         System.out.println("rechargeBankcard response String:  " + result);
         ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
         });
@@ -502,23 +503,23 @@ public class MerchantCardApi {
     public static void uCardKYCApply(String uId) {
         UCardDeliveryAddressVo address = new UCardDeliveryAddressVo();
         UCardHolderInfoVo holderInfo = new UCardHolderInfoVo();
-        holderInfo.setFirst_name("apppaha");
-        holderInfo.setLast_name("sharessaa");
+        holderInfo.setFirst_name("sharhaeiheiah");
+        holderInfo.setLast_name("tempaba");
         holderInfo.setCountry_code("CN");
         holderInfo.setDate_of_birth("1987-11-01");
-        holderInfo.setPhone_number("18318191661");
-        holderInfo.setEmail("test_uq_group_force_recharge@gmail.com");
+        holderInfo.setPhone_number("19701191669");
+        holderInfo.setEmail("test_uq_g1ro1uiuup_force_rec1harge1@gmail.com");
         UCardHolderIdentificationVo identificationVo = new UCardHolderIdentificationVo();
         identificationVo.setIdentificationType(IDTypes.PASSPORT);
         identificationVo.setIdentificationNumber("1234561789");
         identificationVo.setIdentificationExpiryDate("2029-01-01");
-        String demoImg = "3e3d0798-e9c6-49c9-bdb9-612e29b56d2d";
+        String demoImg = "82b9426b-b825-4f38-bae9-8d9a9a80d186";
         identificationVo.setFrontImgFileId(demoImg);
         identificationVo.setBackImgFileId(demoImg);
         identificationVo.setHandheldImgFileId(demoImg);
         UCardSetHolderInfoRequest request = new UCardSetHolderInfoRequest();
         request.setHolderInfo(holderInfo);
-//        request.setAttemptBankcardId(121);
+        request.setAttemptBankcardId(142);
 //        request.setDeliveryAddress(address);
         request.setIdentification(identificationVo);
 
@@ -552,11 +553,11 @@ public class MerchantCardApi {
      *
      * @param
      */
-    public static void assignCard(String uId,String cardNo) {
+    public static void assignCard(String uId,String cardNo,boolean autoActive) {
         AssignBankcardRequest request = new AssignBankcardRequest();
         request.setCardNumber(cardNo);
         request.setBankcardId(142);
-        request.setAutoActive(true);
+        request.setAutoActive(autoActive);
         String result = postData(uId, MerchantCardMethods.UCARD_ASSIGN_CARD, request, null);
         System.out.println("assignCard response String:  " + result);
         ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
@@ -590,14 +591,55 @@ public class MerchantCardApi {
     }
 
     /**
-     * util method
-     * send post data
-     *
+     * create ws holder
      * @param uId
-     * @param method
-     * @param request
-     * @return
      */
+    public static void createWSHolder(String uId, WsCardHolderRequest request) {
+
+        String result = postData(uId, MerchantCardMethods.CREATE_WS_CARDHOLDER, request, null);
+        System.out.println("createWSHolder response String:  " + result);
+        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
+        });
+        System.out.println("createWSHolder response Object:  " + apiResponse);
+        if (apiResponse.isSuccess()) {
+            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
+            System.out.println("createWSHolder encode result===>" + descStr);
+        }
+    }
+
+    public static void updateWSHolder(String uId, WsCardHolderRequest request) {
+        String result = postData(uId, MerchantCardMethods.UPDATE_WS_CARDHOLDER, request, null);
+        System.out.println("updateWSHolder response String:  " + result);
+        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
+        });
+        System.out.println("updateWSHolder response Object:  " + apiResponse);
+        if (apiResponse.isSuccess()) {
+            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
+            System.out.println("updateWSHolder encode result===>" + descStr);
+        }
+    }
+
+    public static void queryWSHolder(String uId, WsCardHolderRequest request) {
+        String result = postData(uId, MerchantCardMethods.QUERY_WS_CARDHOLDER, request, null);
+        System.out.println("queryWSHolder response String:  " + result);
+        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
+        });
+        System.out.println("queryWSHolder response Object:  " + apiResponse);
+        if (apiResponse.isSuccess()) {
+            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
+            System.out.println("queryWSHolder encode result===>" + descStr);
+        }
+
+    }
+        /**
+         * util method
+         * send post data
+         *
+         * @param uId
+         * @param method
+         * @param request
+         * @return
+         */
     private static String postData(String uId, String method, APApiBaseRequest request, String requestOrderId) {
 
         String jsonDataString = JSON.toJSONString(request);
