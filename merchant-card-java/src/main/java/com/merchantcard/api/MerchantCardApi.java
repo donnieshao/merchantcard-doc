@@ -590,6 +590,48 @@ public class MerchantCardApi {
         }
     }
 
+    public static void wsListRegion(String uId) {
+        APApiBaseRequest request = new APApiBaseRequest() {
+        };
+        String result = postData(uId, MerchantCardMethods.WSCARD_LIST_REGION, request, null);
+        System.out.println("wsListRegion response String:  " + result);
+        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
+        });
+        System.out.println("wsListRegion response Object:  " + apiResponse);
+        if (apiResponse.isSuccess()) {
+            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
+            System.out.println("wsListRegion encode result===>" + descStr);
+        }
+    }
+
+    public static void wsListCity(String uId) {
+        APApiBaseRequest request = new APApiBaseRequest() {
+        };
+        String result = postData(uId, MerchantCardMethods.WSCARD_LIST_CITY, request, null);
+        System.out.println("wsListRegion response String:  " + result);
+        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
+        });
+        System.out.println("wsListRegion response Object:  " + apiResponse);
+        if (apiResponse.isSuccess()) {
+            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
+            System.out.println("wsListRegion encode result===>" + descStr);
+        }
+    }
+
+    public static void wsListMobileArea(String uId) {
+        APApiBaseRequest request = new APApiBaseRequest() {
+        };
+        String result = postData(uId, MerchantCardMethods.WSCARD_MOBILE_AREA, request, null);
+        System.out.println("wsListRegion response String:  " + result);
+        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
+        });
+        System.out.println("wsListRegion response Object:  " + apiResponse);
+        if (apiResponse.isSuccess()) {
+            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
+            System.out.println("wsListRegion encode result===>" + descStr);
+        }
+    }
+
     /**
      * create ws holder
      * @param uId
@@ -698,4 +740,6 @@ public class MerchantCardApi {
                 .setConnectionTimeout(NOTIFY_CONNECT_TIMEOUT);
         return httpRequest.execute().body();
     }
+
+
 }

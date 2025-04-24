@@ -134,12 +134,12 @@ public class MerchantCardAPITest {
 
     @Test
     public void testQueryBankcardBalance() {
-        MerchantCardApi.queryBankcardBalance("81795", 33293);
+        MerchantCardApi.queryBankcardBalance("37731", 4365);
     }
 
     @Test
     public void queryBankcardTransactions() {
-        MerchantCardApi.queryBankcardTransactions("37525",3734);
+        MerchantCardApi.queryBankcardTransactions("37731",4365);
     }
 
     @Test
@@ -238,5 +238,16 @@ public class MerchantCardAPITest {
         WsCardHolderRequest request = new WsCardHolderRequest();
         request.setHolderId(58052L);
         MerchantCardApi.queryWSHolder("38156",request);
+    }
+    public void testListRegion() {
+        MerchantCardApi.wsListRegion("37731");
+    }
+    @Test
+    public void testWsListCity() {
+        MerchantCardApi.wsListCity("37731");
+    }
+    @Test
+    public void testWsListMobileArea() {
+        MerchantCardApi.wsListMobileArea("37731");
     }
 }
