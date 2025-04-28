@@ -98,4 +98,7 @@ public class MerchantCardMethods {
 
     public static String QUERY_WS_CARDHOLDER = "/WSCard/holder/query";
 
+
+    public static String UPDATE_NO_PIN_PAYMENT = "/bankcard/update/noPinAmount";
+
 }
