@@ -108,7 +108,7 @@ public class MerchantCardAPITest {
     @Test
     public void register() {
         // 37910
-        MerchantCardApi.userRegister("+49","15150819731","dennisposchner@outlook.com");
+        MerchantCardApi.userRegister("+63","9616242724","linke@9dfin88.com");
     }
 
     @Test
@@ -123,13 +123,13 @@ public class MerchantCardAPITest {
 
     @Test
     public void testApply() {
-        MerchantCardApi.applyBankcard("90166", 180, null, null);
+        MerchantCardApi.applyBankcard("90622", 180, null, null,"29498");
     }
 
     @Test
     public void testRecharge(){
         //37525
-        MerchantCardApi.rechargeBankcard("90166", 39391, new BigDecimal(8), new BigDecimal(21), UUID.randomUUID().toString());
+        MerchantCardApi.rechargeBankcard("90622", 39918, new BigDecimal(8), new BigDecimal(21), UUID.randomUUID().toString().substring(0,25));
     }
 
     @Test
@@ -203,17 +203,17 @@ public class MerchantCardAPITest {
     public void testWsHolder(){
         WsCardHolderRequest request = new WsCardHolderRequest();
         request.setBankcardId(180)
-                .setAreaCode("+49")
-                .setMobile("15150819731")
-                .setEmail("dennisposchner@outlook.com")
-                .setFirstName("john")
-                .setLastName("zhang")
-                .setBirthday("1999-11-19")
+                .setAreaCode("+63")
+                .setMobile("")
+                .setEmail("linke@.com")
+                .setFirstName("RECCO")
+                .setLastName("LE")
+                .setBirthday("1977-09-07")
                 .setCountry("US")
-                .setTown("US_QEE")
-                .setAddress("1861  Henry Ford Avenue")
-                .setPostCode("10007");
-        MerchantCardApi.createWSHolder("90166",request);
+                .setTown("US_LAX")
+                .setAddress("255  Ashcraft Court")
+                .setPostCode("90001");
+        MerchantCardApi.createWSHolder("90622",request);
     }
 
     @Test
@@ -221,8 +221,8 @@ public class MerchantCardAPITest {
         WsCardHolderRequest request = new WsCardHolderRequest();
         request.setHolderId(28442L)
                 .setAreaCode("+1")
-                .setMobile("9178595315")
-                .setEmail("wulixroszn@gmail.com")
+                .setMobile("")
+                .setEmail("")
                 .setFirstName("Mu")
                 .setLastName("ha")
                 .setBirthday("1983-11-19")
@@ -236,8 +236,8 @@ public class MerchantCardAPITest {
     @Test
     public void testQueryWsHolder(){
         WsCardHolderRequest request = new WsCardHolderRequest();
-        request.setHolderId(58052L);
-        MerchantCardApi.queryWSHolder("38156",request);
+        request.setHolderId(29498L);
+        MerchantCardApi.queryWSHolder("90622",request);
     }
     public void testListRegion() {
         MerchantCardApi.wsListRegion("37731");

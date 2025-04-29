@@ -150,11 +150,11 @@ public class MerchantCardApi {
      * @param bankcardId
      * @param residenceAddress
      */
-    public static Integer applyBankcard(String uId, Integer bankcardId, Integer userBankcardId, String residenceAddress) {
+    public static Integer applyBankcard(String uId, Integer bankcardId, Integer userBankcardId, String residenceAddress,String holderRefId) {
         ApplyBankcardRequest request = new ApplyBankcardRequest();
         request.setBankcardId(bankcardId);
         request.setResidenceAddress(residenceAddress);
-        request.setHolderRefId("28774");
+        request.setHolderRefId(holderRefId);
         String result = postData(uId, MerchantCardMethods.APPLY_BANKCARD, request, null);
         System.out.println("applyBankcard response String:  " + result);
         ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {

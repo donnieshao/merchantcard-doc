@@ -20,7 +20,7 @@ public class UCardAPITest {
      */
     @Test
     public void register() {
-        MerchantCardApi.userRegister("+49","15150819","test@outlook.com");
+        MerchantCardApi.userRegister("1","18888888867","188888888662@188.com");
     }
 
     /**

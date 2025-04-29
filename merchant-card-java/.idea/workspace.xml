@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6cd4c07-c249-4cbc-9bf0-557c770d69b1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/merchantcard/api/MerchantCardApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/api/MerchantCardApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/MerchantCardAPITest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MerchantCardAPITest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/UCardAPITest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/UCardAPITest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,20 +71,6 @@
       <module />
       <method />
     </configuration>
-    <configuration name="APEncryptUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.merchantcard.utils.APEncryptUtil" />
-      <module name="merchant-card-java" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.merchantcard.utils.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method v="2">
@@ -118,6 +106,17 @@
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="MerchantCardAPITest" />
       <option name="METHOD_NAME" value="testApply" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MerchantCardAPITest.testQueryWsHolder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="merchant-card-java" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MerchantCardAPITest" />
+      <option name="METHOD_NAME" value="testQueryWsHolder" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
@@ -176,8 +175,8 @@
         <item itemvalue="JUnit.MerchantCardAPITest.testRecharge" />
         <item itemvalue="JUnit.MerchantCardAPITest.testApply" />
         <item itemvalue="JUnit.MerchantCardAPITest.testWsHolder" />
+        <item itemvalue="JUnit.MerchantCardAPITest.testQueryWsHolder" />
         <item itemvalue="JUnit.MerchantCardAPITest.register" />
-        <item itemvalue="Application.APEncryptUtil" />
       </list>
     </recent_temporary>
   </component>
@@ -282,7 +281,13 @@
       <workItem from="1744969647954" duration="4117000" />
       <workItem from="1745243942725" duration="4179000" />
       <workItem from="1745289966309" duration="5736000" />
-      <workItem from="1745418861504" duration="6815000" />
+      <workItem from="1745418861504" duration="6923000" />
+      <workItem from="1745505473464" duration="775000" />
+      <workItem from="1745638767238" duration="837000" />
+      <workItem from="1745823253719" duration="5586000" />
+      <workItem from="1745898303917" duration="2050000" />
+      <workItem from="1745919812827" duration="2311000" />
+      <workItem from="1745939239710" duration="13000" />
     </task>
     <servers />
   </component>
