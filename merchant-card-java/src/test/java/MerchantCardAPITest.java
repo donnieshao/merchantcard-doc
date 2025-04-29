@@ -202,27 +202,27 @@ public class MerchantCardAPITest {
     @Test
     public void testWsHolder(){
         WsCardHolderRequest request = new WsCardHolderRequest();
-        request.setBankcardId(180)
-                .setAreaCode("+63")
-                .setMobile("")
-                .setEmail("linke@.com")
-                .setFirstName("RECCO")
+        request.setBankcardId(148)
+                .setAreaCode("+1")
+                .setMobile("7737561883")
+                .setEmail("ydjsgfzzzt@iubridge.com")
+                .setFirstName("Vertag")
                 .setLastName("LE")
                 .setBirthday("1977-09-07")
                 .setCountry("US")
                 .setTown("US_LAX")
                 .setAddress("255  Ashcraft Court")
                 .setPostCode("90001");
-        MerchantCardApi.createWSHolder("90622",request);
+        MerchantCardApi.createWSHolder("38744",request);
     }
 
     @Test
     public void testUpdateWsHolder(){
         WsCardHolderRequest request = new WsCardHolderRequest();
-        request.setHolderId(28442L)
+        request.setHolderId(58548L)
                 .setAreaCode("+1")
-                .setMobile("")
-                .setEmail("")
+                .setMobile("7737561883")
+                .setEmail("7737561883@qq.com")
                 .setFirstName("Mu")
                 .setLastName("ha")
                 .setBirthday("1983-11-19")
@@ -230,14 +230,14 @@ public class MerchantCardAPITest {
                 .setTown("US_QEE")
                 .setAddress("1149  Williams Avenue")
                 .setPostCode("10001");
-        MerchantCardApi.updateWSHolder("83501",request);
+        MerchantCardApi.updateWSHolder("38744",request);
     }
 
     @Test
     public void testQueryWsHolder(){
         WsCardHolderRequest request = new WsCardHolderRequest();
-        request.setHolderId(29498L);
-        MerchantCardApi.queryWSHolder("90622",request);
+        request.setRequestOrderId("HOLDER2504300004554032519");
+        MerchantCardApi.queryWSHolder("38744",request);
     }
     public void testListRegion() {
         MerchantCardApi.wsListRegion("37731");
@@ -251,8 +251,5 @@ public class MerchantCardAPITest {
         MerchantCardApi.wsListMobileArea("37731");
     }
 
-    @Test
-    public void testNoPinAmount(){
-        MerchantCardApi.setNoPinAmount("38708",4023,"100");
-    }
+
 }

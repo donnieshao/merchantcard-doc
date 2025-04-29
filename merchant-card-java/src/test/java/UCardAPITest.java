@@ -125,5 +125,11 @@ public class UCardAPITest {
         MerchantCardApi.queryBankcardTransactions("37525",3734);
     }
 
-
+    /**
+     * Set the No PIN Input spending limit for the card.
+     */
+    @Test
+    public void testNoPinAmount(){
+        MerchantCardApi.setNoPinAmount("38708",4023,"100");
+    }
 }

@@ -7,6 +7,8 @@
     <list default="true" id="b6cd4c07-c249-4cbc-9bf0-557c770d69b1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/merchantcard/api/MerchantCardApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/api/MerchantCardApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/merchantcard/constants/MerchantCardMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/constants/MerchantCardMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/ws/WsCardHolderRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/merchantcard/models/ws/WsCardHolderRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/MerchantCardAPITest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MerchantCardAPITest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/UCardAPITest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/UCardAPITest.java" afterDir="false" />
     </list>
@@ -63,7 +65,7 @@
       <recent name="com.merchantcard.models" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.MerchantCardAPITest.testRecharge">
+  <component name="RunManager" selected="JUnit.MerchantCardAPITest.testUpdateWsHolder">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="WIDTH" value="400" />
       <option name="HEIGHT" value="300" />
@@ -101,17 +103,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MerchantCardAPITest.testApply" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="merchant-card-java" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="MerchantCardAPITest" />
-      <option name="METHOD_NAME" value="testApply" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="MerchantCardAPITest.testQueryWsHolder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="merchant-card-java" />
       <option name="PACKAGE_NAME" value="" />
@@ -128,6 +119,17 @@
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="MerchantCardAPITest" />
       <option name="METHOD_NAME" value="testRecharge" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MerchantCardAPITest.testUpdateWsHolder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="merchant-card-java" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="MerchantCardAPITest" />
+      <option name="METHOD_NAME" value="testUpdateWsHolder" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
@@ -172,11 +174,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.MerchantCardAPITest.testRecharge" />
-        <item itemvalue="JUnit.MerchantCardAPITest.testApply" />
+        <item itemvalue="JUnit.MerchantCardAPITest.testUpdateWsHolder" />
         <item itemvalue="JUnit.MerchantCardAPITest.testWsHolder" />
         <item itemvalue="JUnit.MerchantCardAPITest.testQueryWsHolder" />
         <item itemvalue="JUnit.MerchantCardAPITest.register" />
+        <item itemvalue="JUnit.MerchantCardAPITest.testRecharge" />
       </list>
     </recent_temporary>
   </component>
@@ -287,7 +289,7 @@
       <workItem from="1745823253719" duration="5586000" />
       <workItem from="1745898303917" duration="2050000" />
       <workItem from="1745919812827" duration="2311000" />
-      <workItem from="1745939239710" duration="13000" />
+      <workItem from="1745939239710" duration="4365000" />
     </task>
     <servers />
   </component>
