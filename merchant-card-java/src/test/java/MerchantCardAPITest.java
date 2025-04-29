@@ -250,4 +250,9 @@ public class MerchantCardAPITest {
     public void testWsListMobileArea() {
         MerchantCardApi.wsListMobileArea("37731");
     }
+
+    @Test
+    public void testNoPinAmount(){
+        MerchantCardApi.setNoPinAmount("38708",4023,"100");
+    }
 }

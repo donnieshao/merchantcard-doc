@@ -673,6 +673,23 @@ public class MerchantCardApi {
         }
 
     }
+
+    public static void setNoPinAmount(String uId, Integer userBankcardId, String amount) {
+        UpdateBankcardNoPinAmountRequest request = new UpdateBankcardNoPinAmountRequest();
+        request.setAmount(amount);
+        request.setUserBankcardId(userBankcardId);
+
+        String result = postData(uId, MerchantCardMethods.UPDATE_NO_PIN_PAYMENT, request, null);
+        System.out.println("setNoPinAmount response String:  " + result);
+        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
+        });
+        System.out.println("setNoPinAmount response Object:  " + apiResponse);
+        if (apiResponse.isSuccess()) {
+            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
+            System.out.println("setNoPinAmount encode result===>" + descStr);
+        }
+    }
+
         /**
          * util method
          * send post data
