@@ -10,6 +10,9 @@ import com.merchantcard.models.ApiResponse;
 import com.merchantcard.models.APApiBaseRequest;
 import com.merchantcard.models.*;
 import com.merchantcard.models.SystemClockRequest;
+import com.merchantcard.models.scard.UCardSaveEmailRequest;
+import com.merchantcard.models.ws.UCardDeleteEmailRequest;
+import com.merchantcard.models.ws.UCardGetEmailRequest;
 import com.merchantcard.models.ws.WsCardHolderRequest;
 import com.merchantcard.utils.APEncryptUtil;
 import com.google.common.base.Strings;
@@ -673,7 +676,53 @@ public class MerchantCardApi {
         }
 
     }
-        /**
+
+    public static void scardAddEmail(String uId,UCardSaveEmailRequest request) {
+        String result = postData(uId, MerchantCardMethods.SCARD_ADD_EMAIL, request, null);
+        System.out.println("scardAddEmail response String:  " + result);
+        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
+        });
+        System.out.println("scardAddEmail response Object:  " + apiResponse);
+        if (apiResponse.isSuccess()) {
+            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
+            System.out.println("scardAddEmail encode result===>" + descStr);
+        }
+    }
+    public static void scardUpdateEmail(String uId,UCardSaveEmailRequest request) {
+        String result = postData(uId, MerchantCardMethods.SCARD_UPDATE_EMAIL, request, null);
+        System.out.println("scardUpdateEmail response String:  " + result);
+        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
+        });
+        System.out.println("scardUpdateEmail response Object:  " + apiResponse);
+        if (apiResponse.isSuccess()) {
+            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
+            System.out.println("scardUpdateEmail encode result===>" + descStr);
+        }
+    }
+    public static void scardGetEmail(String uId, UCardGetEmailRequest request) {
+        String result = postData(uId, MerchantCardMethods.SCARD_GET_EMAIL, request, null);
+        System.out.println("scardGetEmail response String:  " + result);
+        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
+        });
+        System.out.println("scardGetEmail response Object:  " + apiResponse);
+        if (apiResponse.isSuccess()) {
+            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
+            System.out.println("scardGetEmail encode result===>" + descStr);
+        }
+    }
+    public static void scardDeleteEmail(String uId , UCardDeleteEmailRequest request) {
+        String result = postData(uId, MerchantCardMethods.SCARD_DELETE_EMAIL, request, null);
+        System.out.println("scardDeleteEmail response String:  " + result);
+        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
+        });
+        System.out.println("scardDeleteEmail response Object:  " + apiResponse);
+        if (apiResponse.isSuccess()) {
+            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
+            System.out.println("scardDeleteEmail encode result===>" + descStr);
+        }
+    }
+
+    /**
          * util method
          * send post data
          *

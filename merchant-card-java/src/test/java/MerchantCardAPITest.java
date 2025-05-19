@@ -1,4 +1,7 @@
 import com.merchantcard.api.MerchantCardApi;
+import com.merchantcard.models.scard.UCardSaveEmailRequest;
+import com.merchantcard.models.ws.UCardDeleteEmailRequest;
+import com.merchantcard.models.ws.UCardGetEmailRequest;
 import com.merchantcard.models.ws.WsCardHolderRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;
@@ -202,7 +205,7 @@ public class MerchantCardAPITest {
     @Test
     public void testWsHolder(){
         WsCardHolderRequest request = new WsCardHolderRequest();
-        request.setBankcardId(180)
+        request.setBankcardId(148)
                 .setAreaCode("+49")
                 .setMobile("15150819731")
                 .setEmail("dennisposchner@outlook.com")
@@ -239,6 +242,7 @@ public class MerchantCardAPITest {
         request.setHolderId(58052L);
         MerchantCardApi.queryWSHolder("38156",request);
     }
+    @Test
     public void testListRegion() {
         MerchantCardApi.wsListRegion("37731");
     }
@@ -250,4 +254,32 @@ public class MerchantCardAPITest {
     public void testWsListMobileArea() {
         MerchantCardApi.wsListMobileArea("37731");
     }
+
+    @Test
+    public void scardAddEmail() {
+        UCardSaveEmailRequest request = new UCardSaveEmailRequest()
+                .setUserBankcardId(4367)
+                .setEmail("test@qq.com");
+        MerchantCardApi.scardAddEmail("37731", request);
+    }
+    @Test
+    public void scardUpdateEmail() {
+        UCardSaveEmailRequest request = new UCardSaveEmailRequest()
+                .setUserBankcardId(4367)
+                .setEmail("test1@qq.com");
+        MerchantCardApi.scardUpdateEmail("37731",request);
+    }
+    @Test
+    public void scardGetEmail() {
+        UCardGetEmailRequest request = new UCardGetEmailRequest()
+                .setUserBankcardId(4367);
+        MerchantCardApi.scardGetEmail("37731",request);
+    }
+    @Test
+    public void scardDeleteEmail() {
+        UCardDeleteEmailRequest request = new UCardDeleteEmailRequest()
+                .setUserBankcardId(4367);
+        MerchantCardApi.scardDeleteEmail("37731",request);
+    }
+
 }
