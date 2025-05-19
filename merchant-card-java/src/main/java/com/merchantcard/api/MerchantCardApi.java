@@ -693,7 +693,6 @@ public class MerchantCardApi {
         }
     }
 
-        /**
 
     public static void scardAddEmail(String uId,UCardSaveEmailRequest request) {
         String result = postData(uId, MerchantCardMethods.SCARD_ADD_EMAIL, request, null);
