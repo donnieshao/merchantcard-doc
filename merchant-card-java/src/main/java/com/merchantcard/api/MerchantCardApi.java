@@ -153,11 +153,11 @@ public class MerchantCardApi {
      * @param bankcardId
      * @param residenceAddress
      */
-    public static Integer applyBankcard(String uId, Integer bankcardId, Integer userBankcardId, String residenceAddress) {
+    public static Integer applyBankcard(String uId, Integer bankcardId, Integer userBankcardId, String residenceAddress,String holderRefId) {
         ApplyBankcardRequest request = new ApplyBankcardRequest();
         request.setBankcardId(bankcardId);
         request.setResidenceAddress(residenceAddress);
-        request.setHolderRefId("28774");
+        request.setHolderRefId(holderRefId);
         String result = postData(uId, MerchantCardMethods.APPLY_BANKCARD, request, null);
         System.out.println("applyBankcard response String:  " + result);
         ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
@@ -676,6 +676,24 @@ public class MerchantCardApi {
         }
 
     }
+
+    public static void setNoPinAmount(String uId, Integer userBankcardId, String amount) {
+        UpdateBankcardNoPinAmountRequest request = new UpdateBankcardNoPinAmountRequest();
+        request.setAmount(amount);
+        request.setUserBankcardId(userBankcardId);
+
+        String result = postData(uId, MerchantCardMethods.UPDATE_NO_PIN_PAYMENT, request, null);
+        System.out.println("setNoPinAmount response String:  " + result);
+        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
+        });
+        System.out.println("setNoPinAmount response Object:  " + apiResponse);
+        if (apiResponse.isSuccess()) {
+            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
+            System.out.println("setNoPinAmount encode result===>" + descStr);
+        }
+    }
+
+        /**
 
     public static void scardAddEmail(String uId,UCardSaveEmailRequest request) {
         String result = postData(uId, MerchantCardMethods.SCARD_ADD_EMAIL, request, null);

@@ -20,7 +20,7 @@ public class UCardAPITest {
      */
     @Test
     public void register() {
-        MerchantCardApi.userRegister("+49","15150819","test@outlook.com");
+        MerchantCardApi.userRegister("1","18888888867","188888888662@188.com");
     }
 
     /**
@@ -125,5 +125,11 @@ public class UCardAPITest {
         MerchantCardApi.queryBankcardTransactions("37525",3734);
     }
 
-
+    /**
+     * Set the No PIN Input spending limit for the card.
+     */
+    @Test
+    public void testNoPinAmount(){
+        MerchantCardApi.setNoPinAmount("38708",4023,"100");
+    }
 }

@@ -79,6 +79,9 @@ public class MerchantCardMethods {
 
     public static String UCARD_UPLOAD_FILE = "/upload/uCardFile";
 
+    public static String UPDATE_NO_PIN_PAYMENT = "/bankcard/update/noPinAmount";
+
+
 
     /**************Wholder***************/
     public static String SETWHolderInfo = "/user/setWHolderInfo";
