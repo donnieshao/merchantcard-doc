@@ -17,6 +17,8 @@ public class WsCardHolderRequest extends APApiBaseRequest {
      */
     private Integer bankcardId;
 
+    private String requestOrderId;
+
     private Long holderId;
 
     /**

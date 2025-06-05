@@ -79,6 +79,9 @@ public class MerchantCardMethods {
 
     public static String UCARD_UPLOAD_FILE = "/upload/uCardFile";
 
+    public static String UPDATE_NO_PIN_PAYMENT = "/bankcard/update/noPinAmount";
+
+
 
     /**************Wholder***************/
     public static String SETWHolderInfo = "/user/setWHolderInfo";
@@ -100,7 +103,13 @@ public class MerchantCardMethods {
 
     public static String QUERY_WS_CARDHOLDER = "/WSCard/holder/query";
 
+    /**************SCards***************/
+    public static String SCARD_ADD_EMAIL = "/SCard/add/email";
 
-    public static String UPDATE_NO_PIN_PAYMENT = "/bankcard/update/noPinAmount";
+    public static String SCARD_UPDATE_EMAIL = "/SCard/update/email";
+
+    public static String SCARD_GET_EMAIL = "/SCard/get/email";
+
+    public static String SCARD_DELETE_EMAIL = "/SCard/delete/email";
 
 }

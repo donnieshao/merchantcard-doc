@@ -1,4 +1,7 @@
 import com.merchantcard.api.MerchantCardApi;
+import com.merchantcard.models.scard.UCardSaveEmailRequest;
+import com.merchantcard.models.ws.UCardDeleteEmailRequest;
+import com.merchantcard.models.ws.UCardGetEmailRequest;
 import com.merchantcard.models.ws.WsCardHolderRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;
@@ -108,7 +111,7 @@ public class MerchantCardAPITest {
     @Test
     public void register() {
         // 37910
-        MerchantCardApi.userRegister("+49","15150819731","dennisposchner@outlook.com");
+        MerchantCardApi.userRegister("+63","9616242724","linke@9dfin88.com");
     }
 
     @Test
@@ -123,13 +126,13 @@ public class MerchantCardAPITest {
 
     @Test
     public void testApply() {
-        MerchantCardApi.applyBankcard("90166", 180, null, null);
+        MerchantCardApi.applyBankcard("90622", 180, null, null,"29498");
     }
 
     @Test
     public void testRecharge(){
         //37525
-        MerchantCardApi.rechargeBankcard("90166", 39391, new BigDecimal(8), new BigDecimal(21), UUID.randomUUID().toString());
+        MerchantCardApi.rechargeBankcard("90622", 39918, new BigDecimal(8), new BigDecimal(21), UUID.randomUUID().toString().substring(0,25));
     }
 
     @Test
@@ -202,27 +205,27 @@ public class MerchantCardAPITest {
     @Test
     public void testWsHolder(){
         WsCardHolderRequest request = new WsCardHolderRequest();
-        request.setBankcardId(180)
-                .setAreaCode("+49")
-                .setMobile("15150819731")
-                .setEmail("dennisposchner@outlook.com")
-                .setFirstName("john")
-                .setLastName("zhang")
-                .setBirthday("1999-11-19")
+        request.setBankcardId(148)
+                .setAreaCode("+1")
+                .setMobile("7737561883")
+                .setEmail("ydjsgfzzzt@iubridge.com")
+                .setFirstName("Vertag")
+                .setLastName("LE")
+                .setBirthday("1977-09-07")
                 .setCountry("US")
-                .setTown("US_QEE")
-                .setAddress("1861  Henry Ford Avenue")
-                .setPostCode("10007");
-        MerchantCardApi.createWSHolder("90166",request);
+                .setTown("US_LAX")
+                .setAddress("255  Ashcraft Court")
+                .setPostCode("90001");
+        MerchantCardApi.createWSHolder("38744",request);
     }
 
     @Test
     public void testUpdateWsHolder(){
         WsCardHolderRequest request = new WsCardHolderRequest();
-        request.setHolderId(28442L)
+        request.setHolderId(58548L)
                 .setAreaCode("+1")
-                .setMobile("9178595315")
-                .setEmail("wulixroszn@gmail.com")
+                .setMobile("7737561883")
+                .setEmail("7737561883@qq.com")
                 .setFirstName("Mu")
                 .setLastName("ha")
                 .setBirthday("1983-11-19")
@@ -230,15 +233,16 @@ public class MerchantCardAPITest {
                 .setTown("US_QEE")
                 .setAddress("1149  Williams Avenue")
                 .setPostCode("10001");
-        MerchantCardApi.updateWSHolder("83501",request);
+        MerchantCardApi.updateWSHolder("38744",request);
     }
 
     @Test
     public void testQueryWsHolder(){
         WsCardHolderRequest request = new WsCardHolderRequest();
-        request.setHolderId(58052L);
-        MerchantCardApi.queryWSHolder("38156",request);
+        request.setRequestOrderId("HOLDER2504300004554032519");
+        MerchantCardApi.queryWSHolder("38744",request);
     }
+    @Test
     public void testListRegion() {
         MerchantCardApi.wsListRegion("37731");
     }
@@ -252,9 +256,37 @@ public class MerchantCardAPITest {
     }
 
     @Test
+    public void scardAddEmail() {
+        UCardSaveEmailRequest request = new UCardSaveEmailRequest()
+                .setUserBankcardId(4367)
+                .setEmail("test@qq.com");
+        MerchantCardApi.scardAddEmail("37731", request);
+    }
+    @Test
+    public void scardUpdateEmail() {
+        UCardSaveEmailRequest request = new UCardSaveEmailRequest()
+                .setUserBankcardId(4367)
+                .setEmail("test1@qq.com");
+        MerchantCardApi.scardUpdateEmail("37731",request);
+    }
+    @Test
+    public void scardGetEmail() {
+        UCardGetEmailRequest request = new UCardGetEmailRequest()
+                .setUserBankcardId(4367);
+        MerchantCardApi.scardGetEmail("37731",request);
+    }
+    @Test
+    public void scardDeleteEmail() {
+        UCardDeleteEmailRequest request = new UCardDeleteEmailRequest()
+                .setUserBankcardId(4367);
+        MerchantCardApi.scardDeleteEmail("37731",request);
+    }
+
+    @Test
     public void testNoPinAmount(){
         MerchantCardApi.setNoPinAmount("38708",4023,"100");
     }
+
 
     @Test
     public void updateWHolderInfo(){
