@@ -255,4 +255,9 @@ public class MerchantCardAPITest {
     public void testNoPinAmount(){
         MerchantCardApi.setNoPinAmount("38708",4023,"100");
     }
+
+    @Test
+    public void updateWHolderInfo(){
+        MerchantCardApi.updateWHolderInfo("37727",3560,"86", "13409278261");
+    }
 }
