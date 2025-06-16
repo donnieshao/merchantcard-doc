@@ -757,6 +757,71 @@ public class MerchantCardApi {
         }
     }
 
+    public static void deliveryCostInfo(String uId) {
+
+        String result = postData(uId, MerchantCardMethods.CARD_DELIVERY_REGION, new APApiBaseRequest(){}, null);
+        System.out.println("deliveryCostInfo response String:  " + result);
+        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
+        });
+        System.out.println("deliveryCostInfo response Object:  " + apiResponse);
+        if (apiResponse.isSuccess()) {
+            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
+            System.out.println("deliveryCostInfo encode result===>" + descStr);
+        }
+    }
+
+    public static void deliveryAdd(String uId, DeliveryAddressRequest request) {
+
+        String result = postData(uId, MerchantCardMethods.CARD_DELIVERY_ADD, request, null);
+        System.out.println("deliveryAdd response String:  " + result);
+        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
+        });
+        System.out.println("deliveryAdd response Object:  " + apiResponse);
+        if (apiResponse.isSuccess()) {
+            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
+            System.out.println("deliveryAdd encode result===>" + descStr);
+        }
+    }
+
+    public static void deliveryUpdate(String uId, DeliveryAddressRequest request) {
+
+        String result = postData(uId, MerchantCardMethods.CARD_DELIVERY_UPDATE, request, null);
+        System.out.println("deliveryUpdate response String:  " + result);
+        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
+        });
+        System.out.println("deliveryUpdate response Object:  " + apiResponse);
+        if (apiResponse.isSuccess()) {
+            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
+            System.out.println("deliveryUpdate encode result===>" + descStr);
+        }
+    }
+
+    public static void cardApplyV2(String uId, ApplyBankcardV2Request request) {
+
+        String result = postData(uId, MerchantCardMethods.APPLY_BANKCARD_V2, request, null);
+        System.out.println("cardApplyV2 response String:  " + result);
+        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
+        });
+        System.out.println("cardApplyV2 response Object:  " + apiResponse);
+        if (apiResponse.isSuccess()) {
+            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
+            System.out.println("cardApplyV2 encode result===>" + descStr);
+        }
+    }
+
+    public static void findDeliveryList(String uId, DeliveryListRequest request) {
+
+        String result = postData(uId, MerchantCardMethods.DELIVERY_LIST, request, null);
+        System.out.println("findDeliveryList response String:  " + result);
+        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
+        });
+        System.out.println("findDeliveryList response Object:  " + apiResponse);
+        if (apiResponse.isSuccess()) {
+            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
+            System.out.println("findDeliveryList encode result===>" + descStr);
+        }
+    }
+
         /**
          * util method
          * send post data

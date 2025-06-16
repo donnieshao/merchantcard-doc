@@ -1,4 +1,7 @@
 import com.merchantcard.api.MerchantCardApi;
+import com.merchantcard.models.ApplyBankcardV2Request;
+import com.merchantcard.models.DeliveryAddressRequest;
+import com.merchantcard.models.DeliveryListRequest;
 import com.merchantcard.models.scard.UCardSaveEmailRequest;
 import com.merchantcard.models.ws.UCardDeleteEmailRequest;
 import com.merchantcard.models.ws.UCardGetEmailRequest;
@@ -291,5 +294,50 @@ public class MerchantCardAPITest {
     @Test
     public void updateWHolderInfo(){
         MerchantCardApi.updateWHolderInfo("37727",3560,"86", "13409278261");
+    }
+
+    @Test
+    public void deliveryCostInfo(){
+        MerchantCardApi.deliveryCostInfo("38582");
+    }
+
+    @Test
+    public void deliveryAdd(){
+        DeliveryAddressRequest request = new DeliveryAddressRequest();
+        request.setCountryRegionId(19);
+        request.setCity("辽宁省");
+        request.setReceiverName("Sunshine");
+        request.setReceiverMobile("86-18344475148");
+        request.setReceiverAddress("大连市香工街100号2栋1单元901");
+        request.setPostCode("639029");
+        MerchantCardApi.deliveryAdd("38582", request);
+    }
+
+    @Test
+    public void deliveryUpdate(){
+        DeliveryAddressRequest request = new DeliveryAddressRequest();
+        request.setId(33);
+        request.setCountryRegionId(13);
+        request.setCity("辽宁省");
+        request.setReceiverName("Sunshine");
+        request.setReceiverMobile("86-18344475148");
+        request.setReceiverAddress("大连市香工街100号2栋1单元901");
+        request.setPostCode("639029");
+        MerchantCardApi.deliveryUpdate("38582", request);
+    }
+
+    @Test
+    public void cardApplyV2(){
+        ApplyBankcardV2Request request = new ApplyBankcardV2Request();
+        request.setTemplateId(142);
+        request.setDeliveryAddressId(34);
+        MerchantCardApi.cardApplyV2("38582", request);
+    }
+
+    @Test
+    public void findDeliveryList(){
+        DeliveryListRequest request = new DeliveryListRequest();
+        request.setId(29);
+        MerchantCardApi.findDeliveryList("38582", request);
     }
 }

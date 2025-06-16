@@ -112,4 +112,12 @@ public class MerchantCardMethods {
 
     public static String SCARD_DELETE_EMAIL = "/SCard/delete/email";
 
+    /**************实体卡申请相关***************/
+    public static String CARD_DELIVERY_REGION = "/bankcard/ph/delivery/region";
+    public static String CARD_DELIVERY_ADD = "/bankcard/ph/deliveryAddress/add";
+    public static String CARD_DELIVERY_UPDATE = "/bankcard/ph/deliveryAddress/update";
+    public static String APPLY_BANKCARD_V2 = "/bankcard/apply/v2";
+    public static String DELIVERY_LIST = "/bankcard/delivery/list";
+
+
 }
