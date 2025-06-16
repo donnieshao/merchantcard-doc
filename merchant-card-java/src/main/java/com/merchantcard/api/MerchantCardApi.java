@@ -742,6 +742,25 @@ public class MerchantCardApi {
         }
     }
 
+
+    public static void updateWHolderInfo(String uId, Integer userBankcardId, String mobilePrefix, String mobile) {
+        UpdateWHolderInfoRequest request = new UpdateWHolderInfoRequest();
+        request.setBankCardId(userBankcardId);
+        request.setMobile(mobile);
+        request.setMobilePrefix(mobilePrefix);
+
+        String result = postData(uId, MerchantCardMethods.UPDATE_W_HOLDER_INFO, request, null);
+        System.out.println("updateWHolderInfo response String:  " + result);
+        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
+        });
+        System.out.println("updateWHolderInfo response Object:  " + apiResponse);
+        if (apiResponse.isSuccess()) {
+            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
+            System.out.println("updateWHolderInfo encode result===>" + descStr);
+        }
+    }
+
+
     public static void srcardGetEmail(String uId, SRCardGetEmailRequest request) {
         String result = postData(uId, MerchantCardMethods.SRCARD_GET_EMAIL, request, null);
         System.out.println("scardGetEmail response String:  " + result);

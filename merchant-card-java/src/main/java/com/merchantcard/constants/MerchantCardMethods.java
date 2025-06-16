@@ -86,6 +86,8 @@ public class MerchantCardMethods {
     /**************Wholder***************/
     public static String SETWHolderInfo = "/user/setWHolderInfo";
 
+    public static String UPDATE_W_HOLDER_INFO = "/user/updateWHolderInfo";
+
     /*************WSCards***************/
     public static String WSCARD_LIST_REGION = "/WSCard/holder/region/list";
 
