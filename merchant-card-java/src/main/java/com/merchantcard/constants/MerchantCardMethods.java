@@ -110,4 +110,13 @@ public class MerchantCardMethods {
 
     public static String SCARD_DELETE_EMAIL = "/SCard/delete/email";
 
+    /**************SRCards***************/
+    public static String SRCARD_ADD_EMAIL = "/SRCard/add/email";
+
+    public static String SRCARD_UPDATE_EMAIL = "/SRCard/update/email";
+
+    public static String SRCARD_GET_EMAIL = "/SRCard/get/email";
+
+    public static String SRCARD_DELETE_EMAIL = "/SRCard/delete/email";
+
 }

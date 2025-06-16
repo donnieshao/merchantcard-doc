@@ -3,6 +3,9 @@ import com.merchantcard.models.scard.UCardSaveEmailRequest;
 import com.merchantcard.models.ws.UCardDeleteEmailRequest;
 import com.merchantcard.models.ws.UCardGetEmailRequest;
 import com.merchantcard.models.ws.WsCardHolderRequest;
+import com.merchantcard.sunrate.SRCardDeleteEmailRequest;
+import com.merchantcard.sunrate.SRCardGetEmailRequest;
+import com.merchantcard.sunrate.SRCardSaveEmailRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -282,4 +285,32 @@ public class MerchantCardAPITest {
         MerchantCardApi.scardDeleteEmail("37731",request);
     }
 
+
+    @Test
+    public void srCardGetEmail() {
+        SRCardGetEmailRequest request = new SRCardGetEmailRequest()
+                .setUserBankcardId(5358);
+        MerchantCardApi.srcardGetEmail("37731",request);
+    }
+    @Test
+    public void srCardDeleteEmail() {
+        SRCardDeleteEmailRequest request = new SRCardDeleteEmailRequest()
+                .setUserBankcardId(5358);
+        MerchantCardApi.srcardDeleteEmail("37731",request);
+    }
+
+    @Test
+    public void srCardAddEmail() {
+        SRCardSaveEmailRequest request = new SRCardSaveEmailRequest()
+                .setUserBankcardId(5358)
+                .setEmail("test@qq.com");
+        MerchantCardApi.srcardAddEmail("37731", request);
+    }
+    @Test
+    public void srCardUpdateEmail() {
+        SRCardSaveEmailRequest request = new SRCardSaveEmailRequest()
+                .setUserBankcardId(5358)
+                .setEmail("test12@qq.com");
+        MerchantCardApi.srcardUpdateEmail("37731",request);
+    }
 }
