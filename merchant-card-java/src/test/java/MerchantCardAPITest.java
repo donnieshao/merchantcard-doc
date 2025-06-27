@@ -1,5 +1,6 @@
 import com.merchantcard.api.MerchantCardApi;
 import com.merchantcard.models.ApplyBankcardV2Request;
+import com.merchantcard.models.DeerTransferOrderRequest;
 import com.merchantcard.models.DeliveryAddressRequest;
 import com.merchantcard.models.DeliveryListRequest;
 import com.merchantcard.models.scard.UCardSaveEmailRequest;
@@ -370,5 +371,41 @@ public class MerchantCardAPITest {
         DeliveryListRequest request = new DeliveryListRequest();
         request.setId(29);
         MerchantCardApi.findDeliveryList("38582", request);
+    }
+
+    @Test
+    public void remitOrderCreate(){
+        DeerTransferOrderRequest request = new DeerTransferOrderRequest();
+        request.setCustomerId(38582);
+        request.setOrderNo("HK2412301337326073687");
+        request.setReceivePaymentAccountNumber("6225123456789012");
+        request.setFirstName("三");
+        request.setLastName("张");
+        request.setAmount(new BigDecimal(100));
+        request.setTransferType(0);
+        request.setDeductType(0);
+        MerchantCardApi.remitOrderCreate("38582", request);
+    }
+
+    @Test
+    public void remitOrderGet(){
+        DeerTransferOrderRequest request = new DeerTransferOrderRequest();
+        request.setOrderNo("HK2412301337326073687");
+        MerchantCardApi.remitOrderGet("38582", request);
+    }
+
+    @Test
+    public void remitOrderFreezeAccount(){
+        DeerTransferOrderRequest request = new DeerTransferOrderRequest();
+        request.setOrderNo("HK2412301337326073687");
+        MerchantCardApi.remitOrderFreezeAccount("38582", request);
+    }
+
+    @Test
+    public void remitOrderNotify(){
+        DeerTransferOrderRequest request = new DeerTransferOrderRequest();
+        request.setOrderNo("HK2412301337326073687");
+        request.setStatus(1);
+        MerchantCardApi.remitOrderNotify("38582", request);
     }
 }

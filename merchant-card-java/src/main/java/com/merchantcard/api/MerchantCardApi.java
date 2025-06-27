@@ -874,6 +874,58 @@ public class MerchantCardApi {
         }
     }
 
+    public static void remitOrderCreate(String uId, DeerTransferOrderRequest request) {
+
+        String result = postData(uId, MerchantCardMethods.REMIT_ORDER_CREATE, request, null);
+        System.out.println("remitOrderCreate response String:  " + result);
+        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
+        });
+        System.out.println("remitOrderCreate response Object:  " + apiResponse);
+        if (apiResponse.isSuccess()) {
+            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
+            System.out.println("remitOrderCreate encode result===>" + descStr);
+        }
+    }
+
+    public static void remitOrderGet(String uId, DeerTransferOrderRequest request) {
+
+        String result = postData(uId, MerchantCardMethods.REMIT_ORDER_GET, request, null);
+        System.out.println("remitOrderGet response String:  " + result);
+        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
+        });
+        System.out.println("remitOrderGet response Object:  " + apiResponse);
+        if (apiResponse.isSuccess()) {
+            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
+            System.out.println("remitOrderGet encode result===>" + descStr);
+        }
+    }
+
+    public static void remitOrderFreezeAccount(String uId, DeerTransferOrderRequest request) {
+
+        String result = postData(uId, MerchantCardMethods.REMIT_ORDER_FREEZE_ACCOUNT, request, null);
+        System.out.println("remitOrderFreezeAccount response String:  " + result);
+        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
+        });
+        System.out.println("remitOrderFreezeAccount response Object:  " + apiResponse);
+        if (apiResponse.isSuccess()) {
+            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
+            System.out.println("remitOrderFreezeAccount encode result===>" + descStr);
+        }
+    }
+
+    public static void remitOrderNotify(String uId, DeerTransferOrderRequest request) {
+
+        String result = postData(uId, MerchantCardMethods.REMIT_ORDER_NOTIFY, request, null);
+        System.out.println("remitOrderNotify response String:  " + result);
+        ApiResponse<String> apiResponse = JSON.parseObject(result, new TypeReference<ApiResponse<String>>() {
+        });
+        System.out.println("remitOrderNotify response Object:  " + apiResponse);
+        if (apiResponse.isSuccess()) {
+            String descStr = APEncryptUtil.decode(APP_SECRET, apiResponse.getResult());
+            System.out.println("remitOrderNotify encode result===>" + descStr);
+        }
+    }
+
         /**
          * util method
          * send post data

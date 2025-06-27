@@ -128,5 +128,10 @@ public class MerchantCardMethods {
     public static String APPLY_BANKCARD_V2 = "/bankcard/apply/v2";
     public static String DELIVERY_LIST = "/bankcard/delivery/list";
 
+    public static String REMIT_ORDER_CREATE = "/remit/order/create";
+    public static String REMIT_ORDER_GET = "/remit/order/getByOrderNo";
+    public static String REMIT_ORDER_FREEZE_ACCOUNT = "/remit/order/freezeAccountByOrderNo";
+    public static String REMIT_ORDER_NOTIFY = "/remit/order/remitResultNotify";
+
 
 }
